@@ -5,7 +5,7 @@ const initialState = {
     cabin: [],
     cabinImgUrl: '',
   };
-  const fetchReducer = (state = initialState, action) => {
+  const cabinReducer = (state = initialState, action) => {
     switch (action.type) {
       case 'CLEAR_STATE':
         return {
@@ -55,4 +55,4 @@ const initialState = {
     }
   };
   
-  export default fetchReducer;
+  export default cabinReducer;
