@@ -19,7 +19,7 @@ const addToFavourites = (data, user) => dispatch => {
     };
   
     authAxios
-      .post('/api/v1/favourites.json', hseData)
+      .post('/api/v1/favourites.json', cabinData)
       .then(res => {
         const newUserFav = [...user.favourites, res.data];
         const curRes = { ...user, favourites: newUserFav };
@@ -123,4 +123,4 @@ const addToFavourites = (data, user) => dispatch => {
   };
   
 
-  export { addToFavourites, removeFromFavourites, uploadImage, isFavourite};
+  export { addToFavourites, removeFromFavourites, uploadImage, clearImage, isFavourite};
