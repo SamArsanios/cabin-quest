@@ -3,14 +3,14 @@ import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Loading from './Loading';
 
-const CabinLists = () => {
+const CabinLists = (props) => {
   const { cabin } = props;
   const srcImg = 'https://images.unsplash.com/photo-1575263977165-207a71e8f31f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9';
   const cabinDetails = cabin ? (
     <div className="card shadow-lg p-0">
       <Card.Img
         variant="top"
-        src={card.body.image ? card.body.image : srcImg}
+        src={cabin.body.image ? cabin.body.image : srcImg}
       />
       {cabin.body && (
         <div className="house-status">

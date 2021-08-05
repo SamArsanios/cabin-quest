@@ -1,3 +1,5 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable camelcase */
 import Axios from 'axios';
 
 const addToFavourites = (data, user) => (dispatch) => {

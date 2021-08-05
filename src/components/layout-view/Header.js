@@ -1,9 +1,9 @@
 import React from 'react';
-import MobileNav from './MobileNav';
+import NavLinks from './NavLinks';
 
 const Header = () => (
   <div className="header mb-5">
-    <MobileNav />
+    <NavLinks />
   </div>
 );
 

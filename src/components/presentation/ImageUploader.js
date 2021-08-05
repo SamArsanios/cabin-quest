@@ -1,3 +1,9 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable   react/no-did-update-set-state */
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/require-default-props */
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -100,7 +106,7 @@ class ImageUploader extends Component {
 ImageUploader.propTypes = {
   cabinImgUrl: PropTypes.any,
   uploadImage: PropTypes.func.isRequired,
-  // status: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
   clearImage: PropTypes.func.isRequired,
 };
 const mapStateToProps = (state) => ({

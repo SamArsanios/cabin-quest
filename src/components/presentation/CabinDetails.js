@@ -1,11 +1,21 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable camelcase */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable  consistent-return */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable  react/no-did-update-set-state */
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable  eqeqeq */
+/* eslint-disable react/require-default-props */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button, Card } from 'react-bootstrap';
-// import Icofont from 'react-icofont';
+import Icofont from 'react-icofont';
 import { fetchUser } from '../../redux/actions/userActions';
 import { fetchCabin, deleteCabin, unLoad } from '../../redux/actions/cabinActions';
 import { addToFavourites, removeFromFavourites, isFavourite } from '../../redux/actions/favActions';
+import AddCabin from './AddCabin';
 import Errors from './Errors';
 import Loading from './Loading';
 
@@ -46,7 +56,7 @@ class CabinDetails extends Component {
 
   componentDidUpdate(nextProps) {
     const {
-      currentUser, match, isFav, fav, type, history,
+      currentUser, match, isFavourite, fav, type, history,
     } = this.props;
     const { id, favourites } = currentUser;
     const { cabin_id } = match.params;
@@ -57,7 +67,7 @@ class CabinDetails extends Component {
       });
       if (id && !fav) {
         favourite = favourites.some((fav) => fav.cabin_id == cabin_id);
-        favourite && isFav();
+        favourite && isFavourite();
       }
     }
 
@@ -84,7 +94,7 @@ class CabinDetails extends Component {
     // Handel Delete Cabin
     const handleDelete = () => {
       unLoad({ loading: true });
-      dropCabin(cabin.id);
+      deleteCabin(cabin.id);
     };
 
     // Add To Favourite
@@ -187,7 +197,7 @@ class CabinDetails extends Component {
     ) : (
       <div className="loading">
         {loading && <Loading />}
-        {errors && <ErrOrs />}
+        {errors && <Errors />}
       </div>
     );
     return <div>{cabinDetails}</div>;

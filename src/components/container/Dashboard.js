@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable react/forbid-prop-types */
 import React, { Component } from 'react';
 import Switch from 'react-bootstrap/esm/Switch';
 import { connect } from 'react-redux';

@@ -1,8 +1,16 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/no-did-update-set-state */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Button, Form } from 'react-bootstrap';
 import { createUser, fetchUser, authorizeUser } from '../../redux/actions/userActions';
 import { unLoad } from '../../redux/actions/cabinActions';
+import Loading from '../presentation/Loading';
+import Errors from '../presentation/Errors';
 
 class SignUp extends Component {
   constructor(props) {

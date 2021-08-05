@@ -18,6 +18,17 @@ class Errors extends Component {
   }
 
   render() {
+    const { show } = this.state;
+    const { errors } = this.props;
+
+    const setShow = () => {
+      const { unloadError } = this.props;
+      unloadError();
+      this.setState({
+        show: false,
+      });
+    };
+
     return (
       <div>
         <Alert show={show} variant="danger">

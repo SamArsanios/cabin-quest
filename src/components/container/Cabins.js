@@ -1,7 +1,10 @@
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/require-default-props */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchCabins } from '../../redux/actions/cabinActions';
+import CabinLists from '../presentation/CabinLists';
 import Loading from '../presentation/Loading';
 import Errors from '../presentation/Errors';
 

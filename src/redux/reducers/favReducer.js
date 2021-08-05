@@ -28,3 +28,5 @@ const fetchReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default fetchReducer;
