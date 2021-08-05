@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { uploadImage, clearImage } from '../../redux/actions/favActions'
+import { uploadImage, clearImage } from '../../redux/actions/favActions';
+import Loading from './Loading';
 
 class ImageUploader extends Component {
   constructor(props){
