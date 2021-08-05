@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
+import { Navbar } from 'react-bootstrap';
+import NavLinks from '../layout-view/NavLinks';
 
-const Users = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+const Users = () => (
+    <div>
+      <Navbar />
+      <NavLinks />
+      <div className="container d-flex justify-content-center">Coming Soon!</div>
+    </div>
+  );
 
-export default Users
+export default Users;

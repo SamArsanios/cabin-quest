@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import {fetchUser, fetchUserFavourites} from '../../redux/actions/userActions';
+import Loading from '../presentation/Loading';
+import Errors from '../presentation/Errors';
 
 class Favourites extends Component {
   constructor(props) {
