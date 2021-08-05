@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 import { fetchUser } from '../../redux/actions/userActions';
 import AddHouse from '../houses/AddHouse';
-import './NavBar.scss';
+import '../../assets/scss/NavBar.scss';
 
 class NavBar extends Component {
   componentDidMount() {
