@@ -5,12 +5,12 @@ import { uploadImage, clearImage } from '../../redux/actions/favActions';
 import Loading from './Loading';
 
 class ImageUploader extends Component {
-  constructor(props){
-      super(props);
-      this.state = {
-          loading: false,
-          image: {},
-      };
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false,
+      image: {},
+    };
   }
 
   componentDidUpdate() {
@@ -24,7 +24,7 @@ class ImageUploader extends Component {
       });
   }
 
-  onChange = e => {
+  onChange = (e) => {
     e.preventDefault();
     e.persist();
     this.setState({
@@ -32,7 +32,7 @@ class ImageUploader extends Component {
     });
   };
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
     this.setState({
       ...this.state,
@@ -53,7 +53,9 @@ class ImageUploader extends Component {
     return (
       <div className="uploader-container">
         <h1 className="uploader-header">
-          {status} {/*need to add status or remove it man */}  
+          {status}
+          {' '}
+          {/* need to add status or remove it man */}
           {' '}
           Image
           {' '}
@@ -101,7 +103,7 @@ ImageUploader.propTypes = {
   // status: PropTypes.string.isRequired,
   clearImage: PropTypes.func.isRequired,
 };
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   cabinImgUrl: state.data.cabinImgUrl,
 });
 

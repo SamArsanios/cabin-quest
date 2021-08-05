@@ -5,7 +5,7 @@ import Icofont from 'react-icofont';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 import { fetchUser } from '../../redux/actions/userActions';
-import AddHouse from '../houses/AddHouse';
+import AddCabin from '../presentation/AddCabin';
 import '../../assets/scss/NavBar.scss';
 
 class NavBar extends Component {
@@ -69,9 +69,9 @@ class NavBar extends Component {
                 Dashboard
               </NavLink>
 
-              <AddHouse
+              <AddCabin
                 status="Add"
-                house={{
+                cabin={{
                   body: {
                     address: '',
                     country: 'Ug',
@@ -101,7 +101,7 @@ class NavBar extends Component {
                   {currentUser ? currentUser.username : 'Profile'}
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/users">Users</NavDropdown.Item>
-                <NavDropdown.Item href={`/user/favorites/${currentUser.username}`}>
+                <NavDropdown.Item href={`/user/favourites/${currentUser.username}`}>
                   <Icofont icon="heart" />
                   {' '}
                   Favs
@@ -126,7 +126,7 @@ NavBar.propTypes = {
   currentUser: PropTypes.any,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   errors: state.error.err,
   currentUser: state.userData.currentUser,
   loading: state.userData.loading,

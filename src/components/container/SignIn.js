@@ -36,109 +36,109 @@ class SignIn extends Component {
     jwt && loggedIn && history.push(`/dashboard/${username}`);
   }
 
-    render() {
-      const handleChange = e => {
-        const { id, value } = e.target;
-        const { data } = this.state;
-        this.setState({
-          ...this.state,
-          data: {
-            ...data,
-            [id]: value,
-          },
-        });
-      };
+  render() {
+    const handleChange = (e) => {
+      const { id, value } = e.target;
+      const { data } = this.state;
+      this.setState({
+        ...this.state,
+        data: {
+          ...data,
+          [id]: value,
+        },
+      });
+    };
 
-      const {
-        authorizeUser,
-        currentUser,
-        loggedIn,
-        errors,
-        history,
-      } = this.props;
+    const {
+      authorizeUser,
+      currentUser,
+      loggedIn,
+      errors,
+      history,
+    } = this.props;
 
-      const handleSubmit = e => {
-        e.preventDefault();
-        this.setState({
-          isSubmit: true,
-        });
-        const { data } = this.state;
-        authorizeUser(data);
-        currentUser
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      this.setState({
+        isSubmit: true,
+      });
+      const { data } = this.state;
+      authorizeUser(data);
+      currentUser
           && loggedIn
           && history.push(`/dashboard/${currentUser.username}`);
-      };
-      const { isSubmit } = this.state;
+    };
+    const { isSubmit } = this.state;
 
-        return (
-          <div className="signin auth">
+    return (
+      <div className="signin auth">
 
-          <div className="auth-header-container">
-            {errors && (
-              <div className="loading">
-                <Errors />
-              </div>
-            )}
-  
-            <h1 className="auth-header py-5 text-center font-weight-bolder">
-              Sign In
-            </h1>
-            <p className="auth-desc pb-5 font-weight-bolder">
-              Hey! Log In to manage your account.
-            </p>
+        <div className="auth-header-container">
+          {errors && (
+          <div className="loading">
+            <Errors />
           </div>
-          <Form
-            className="user-form p-5 shadow-lg bg-white"
-            onSubmit={handleSubmit}
-          >
-            <Form.Group controlId="username" className="pb-3">
-              <Form.Control
-                required
-                type="username"
-                placeholder="Enter Username"
-                onChange={handleChange}
-              />
-            </Form.Group>
-  
-            <Form.Group controlId="email" className="pb-3">
-              <Form.Control
-                required
-                type="email"
-                placeholder="Enter email"
-                onChange={handleChange}
-              />
-              <Form.Text className="text-muted">
-                We will never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
-  
-            <Form.Group controlId="password" className="pb-5">
-              <Form.Control
-                required
-                type="password"
-                placeholder="Password"
-                onChange={handleChange}
-              />
-            </Form.Group>
-  
-            {isSubmit && !errors && (
-              <div className="loading">
-                <Loading />
-              </div>
-            )}
-  
-            <Button className="btn hero-btn w-100" type="submit">
-              Submit
-            </Button>
-            <p className="text-center mt-3 font-weight-bolder auth-text">OR</p>
-            <a href="/signup" className="my-3 text-center w-100 btn-link">
-              {' '}
-              Register
-            </a>
-          </Form>
+          )}
+
+          <h1 className="auth-header py-5 text-center font-weight-bolder">
+            Sign In
+          </h1>
+          <p className="auth-desc pb-5 font-weight-bolder">
+            Hey! Log In to manage your account.
+          </p>
         </div>
-        )
-    }
+        <Form
+          className="user-form p-5 shadow-lg bg-white"
+          onSubmit={handleSubmit}
+        >
+          <Form.Group controlId="username" className="pb-3">
+            <Form.Control
+              required
+              type="username"
+              placeholder="Enter Username"
+              onChange={handleChange}
+            />
+          </Form.Group>
+
+          <Form.Group controlId="email" className="pb-3">
+            <Form.Control
+              required
+              type="email"
+              placeholder="Enter email"
+              onChange={handleChange}
+            />
+            <Form.Text className="text-muted">
+              We will never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group controlId="password" className="pb-5">
+            <Form.Control
+              required
+              type="password"
+              placeholder="Password"
+              onChange={handleChange}
+            />
+          </Form.Group>
+
+          {isSubmit && !errors && (
+          <div className="loading">
+            <Loading />
+          </div>
+          )}
+
+          <Button className="btn hero-btn w-100" type="submit">
+            Submit
+          </Button>
+          <p className="text-center mt-3 font-weight-bolder auth-text">OR</p>
+          <a href="/signup" className="my-3 text-center w-100 btn-link">
+            {' '}
+            Register
+          </a>
+        </Form>
+      </div>
+    );
+  }
 }
 
 SignIn.propTypes = {
@@ -155,6 +155,6 @@ const mapStateToProps = (state) => ({
   username: state.userData.username,
   currentUser: state.userData.currentUser,
   loggedIn: state.userData.loggedIn,
-})
+});
 
-export default connect(mapStateToProps, { authorizeUser })(SignIn)
+export default connect(mapStateToProps, { authorizeUser })(SignIn);

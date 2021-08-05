@@ -58,7 +58,7 @@ class NavLinks extends Component {
                 {currentUser ? currentUser.username : 'Profile'}
               </NavDropdown.Item>
               <NavDropdown.Item href="/users">Users</NavDropdown.Item>
-              <NavDropdown.Item href={`/dashboard/favorites/${currentUser.username}`}>
+              <NavDropdown.Item href={`/dashboard/favourites/${currentUser.username}`}>
                 <Icofont icon="heart" />
                 {' '}
                 Favs
@@ -104,7 +104,7 @@ NavLinks.propTypes = {
   currentUser: PropTypes.any,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   errors: state.error.err,
   currentUser: state.userData.currentUser,
   loading: state.userData.loading,

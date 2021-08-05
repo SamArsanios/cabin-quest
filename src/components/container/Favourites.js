@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import {fetchUser, fetchUserFavourites} from '../../redux/actions/userActions';
+import { fetchUser, fetchUserFavourites } from '../../redux/actions/userActions';
 import Loading from '../presentation/Loading';
 import Errors from '../presentation/Errors';
 
@@ -38,8 +38,9 @@ class Favourites extends Component {
       userFavsLoaded: true,
     });
   }
-    render() {
-      const srcImg = 'https://images.unsplash.com/photo-1575263977165-207a71e8f31f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9';
+
+  render() {
+    const srcImg = 'https://images.unsplash.com/photo-1575263977165-207a71e8f31f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9';
     const { favourites, loading, errors } = this.props;
     const favList = !this.state.userFavsLoaded ? (
       <div className="loading">
@@ -47,7 +48,7 @@ class Favourites extends Component {
         {errors && <Errors />}
       </div>
     ) : (
-      favourites.favourites.map(fav => (
+      favourites.favourites.map((fav) => (
         <div className="card p-4 fav-card shadow-lg p-o" key={fav.id}>
           <Card.Img
             variant="top"
@@ -93,10 +94,10 @@ class Favourites extends Component {
         <div className="fav-container">{ favList}</div>
       </div>
     );
-    }
+  }
 }
 
-Favorites.propTypes = {
+Favourites.propTypes = {
   errors: PropTypes.any,
   loading: PropTypes.any,
   history: PropTypes.any,
@@ -113,4 +114,4 @@ const mapStateToProps = (state) => ({
   favourites: state.userData.user_favourites,
 });
 
-export default connect(mapStateToProps, {fetchUser, fetchUserFavourites})(Favourites);
+export default connect(mapStateToProps, { fetchUser, fetchUserFavourites })(Favourites);

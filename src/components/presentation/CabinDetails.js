@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Button, Card } from 'react-bootstrap';
 // import Icofont from 'react-icofont';
 import { fetchUser } from '../../redux/actions/userActions';
-import { fetchCabin, deleteCabin, unLoad,  } from '../../redux/actions/cabinActions';
+import { fetchCabin, deleteCabin, unLoad } from '../../redux/actions/cabinActions';
 import { addToFavourites, removeFromFavourites, isFavourite } from '../../redux/actions/favActions';
 import Errors from './Errors';
 import Loading from './Loading';
@@ -56,7 +56,7 @@ class CabinDetails extends Component {
         favBtn: false,
       });
       if (id && !fav) {
-        favourite = favourites.some(fav => fav.cabin_id == cabin_id);
+        favourite = favourites.some((fav) => fav.cabin_id == cabin_id);
         favourite && isFav();
       }
     }
@@ -221,13 +221,13 @@ const mapStateToProps = (state) => ({
   loading: state.data.loading,
   fav: state.data.fav,
   loggedIn: state.userData.loggedIn,
-})
+});
 
-export default connect(mapStateToProps,{
-  fetchUser, 
+export default connect(mapStateToProps, {
+  fetchUser,
   fetchCabin,
   deleteCabin,
-  addToFavourites, 
+  addToFavourites,
   removeFromFavourites,
   isFavourite,
   unLoad,

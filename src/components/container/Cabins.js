@@ -9,7 +9,7 @@ class Cabins extends Component {
   componentDidMount() {
     const { fetchCabins } = this.props;
     fetchCabins();
-}
+  }
 
   render() {
     const { cabins, errors, loading } = this.props;
@@ -18,7 +18,7 @@ class Cabins extends Component {
       <div className="container-xl">
         <div className="cabin-container my-4 py-3">
           {cabins
-            && cabins.map(cabin => (
+            && cabins.map((cabin) => (
               <CabinLists cabin={cabin} key={cabin.id} errors={errors} />
             ))}
         </div>
@@ -46,6 +46,6 @@ const mapStateToProps = (state) => ({
   loading: state.data.loading,
   errors: state.error.err,
   cabin: state.data.cabin,
-})
+});
 
 export default connect(mapStateToProps, { fetchCabins })(Cabins);

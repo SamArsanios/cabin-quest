@@ -56,14 +56,14 @@ class AddCabinForm extends Component {
     } = this.props;
 
     const availability = ['available', 'processing', 'unavailable'];
-    const handleChange = e => {
+    const handleChange = (e) => {
       const { id, value } = e.target;
       this.setState({
         [id]: value,
       });
     };
 
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
       e.preventDefault();
       if (status === 'Add') {
         unLoad({ loading: true });
@@ -142,7 +142,7 @@ class AddCabinForm extends Component {
           <Form.Group controlId="status">
             <Form.Label>Select a Cabin Status</Form.Label>
             <Form.Control as="select" value={stateUs} onChange={handleChange}>
-              {availability.map(hstate => (
+              {availability.map((hstate) => (
                 <option key={hstate}>{hstate}</option>
               ))}
             </Form.Control>
@@ -172,7 +172,7 @@ AddCabinForm.propTypes = {
   type: PropTypes.string,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   errors: state.error.err,
   cabinImgUrl: state.data.cabinImgUrl,
   currentUser: state.userData.currentUser,

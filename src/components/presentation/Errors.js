@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Alert, Button } from 'react-bootstrap';
-import {unloadError} from '../../redux/actions/utilityActions';
+import { unloadError } from '../../redux/actions/utilityActions';
 
 class Errors extends Component {
   constructor(props) {
@@ -20,46 +20,46 @@ class Errors extends Component {
   render() {
     return (
       <div>
-      <Alert show={show} variant="danger">
-        <Alert.Heading>Sorry Something went wrong!</Alert.Heading>
-        <div>
-          {errors.request && (
+        <Alert show={show} variant="danger">
+          <Alert.Heading>Sorry Something went wrong!</Alert.Heading>
+          <div>
+            {errors.request && (
             <h6 className="my-5">{errors.request.response}</h6>
-          )}
+            )}
 
-          {errors.message && (
-          <h6 className="my-5">
-            {errors.message}
-            {' '}
-          </h6>
-          )}
-          {errors.response && (
+            {errors.message && (
+            <h6 className="my-5">
+              {errors.message}
+              {' '}
+            </h6>
+            )}
+            {errors.response && (
             <h6 className="my-5">{errors.response.data.error}</h6>
-          )}
+            )}
 
-          {errors.response && errors.response.status === 401 && (
+            {errors.response && errors.response.status === 401 && (
             <h6 className="my-5 text-center">
               Your Login session has expired. Kindly login again.
             </h6>
-          )}
+            )}
 
-          {errors.response && (
+            {errors.response && (
             <h6 className="my-5">{errors.response.data.error}</h6>
-          )}
-          <h6 className="content">
-            If you are trying to login double check your username,email and
-            password
-          </h6>
-        </div>
-        <hr />
-        <div className="d-flex justify-content-end">
-          <Button onClick={setShow} variant="outline-danger">
-            close
-          </Button>
-        </div>
-      </Alert>
-    </div>
-      );
+            )}
+            <h6 className="content">
+              If you are trying to login double check your username,email and
+              password
+            </h6>
+          </div>
+          <hr />
+          <div className="d-flex justify-content-end">
+            <Button onClick={setShow} variant="outline-danger">
+              close
+            </Button>
+          </div>
+        </Alert>
+      </div>
+    );
   }
 }
 
@@ -72,7 +72,7 @@ Errors.defaultProps = {
   errors: PropTypes.shape,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   errors: state.error.err,
 });
 

@@ -51,6 +51,6 @@ const CabinLists = () => {
     </div>
   );
   return cabinDetails;
-}
+};
 
 export default CabinLists;

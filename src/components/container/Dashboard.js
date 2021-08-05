@@ -7,13 +7,13 @@ import Footer from '../layout-view/Footer';
 import NavBar from '../layout-view/NavBar';
 import NavLinks from '../layout-view/NavLinks';
 import { fetchUser, logOutCurrentUser } from '../../redux/actions/userActions';
-import { fetchCabins } from '../../redux/actions/cabinActions'
+import { fetchCabins } from '../../redux/actions/cabinActions';
 import Cabins from './Cabins';
-import CabinDetails from '../../components/presentation/CabinDetails';
+import CabinDetails from '../presentation/CabinDetails';
 import Users from './Users';
 import Favourites from './Favourites';
 import Home from './Home';
-import Success from '../../components/presentation/Success';
+import Success from '../presentation/Success';
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -77,15 +77,15 @@ Dashboard.propTypes = {
 };
 
 Dashboard.defaultProps = {
-    errors: PropTypes.shape,
-    match: PropTypes.shape,
-    success: PropTypes.shape,
-    currentUser: PropTypes.shape,
-    username: PropTypes.string,
-    history: PropTypes.shape,
-  };
+  errors: PropTypes.shape,
+  match: PropTypes.shape,
+  success: PropTypes.shape,
+  currentUser: PropTypes.shape,
+  username: PropTypes.string,
+  history: PropTypes.shape,
+};
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   errors: state.error.err,
   currentUser: state.userData.currentUser,
   username: state.userData.username,

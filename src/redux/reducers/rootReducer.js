@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import { errorReducer } from './utilityReducer';
+import { errorReducer, successReducer } from './utilityReducer';
 import cabinReducer from './cabinReducer';
-import { successReducer } from './utilityReducer';
+
 import userReducer from './userReducer';
 
 const rootReducer = combineReducers({
