@@ -107,11 +107,11 @@ class SignUp extends Component {
 
     return (
       <div className="signup auth">
-        <h1 className="display-6 mb-3  font-weight-bolder text-center">
+        <h1 className="auth-header text-center font-weight-bolder">
           Sign Up
         </h1>
         <Form
-          className="user-form p-5 mb-2 shadow-lg bg-white"
+          className="user-form px-5 py-2 shadow-lg bg-white"
           onSubmit={handleSubmit}
         >
           {errors && (
@@ -144,7 +144,7 @@ class SignUp extends Component {
             <Form.Control
               required
               type="text"
-              placeholder="Enter your unique username"
+              placeholder="Enter username"
               onChange={handleChange}
             />
           </Form.Group>
@@ -156,9 +156,9 @@ class SignUp extends Component {
               placeholder="Enter email"
               onChange={handleChange}
             />
-            <Form.Text className="text-muted">
+            {/* <Form.Text className="text-muted">
               We will never share your email with anyone else.
-            </Form.Text>
+            </Form.Text> */}
           </Form.Group>
 
           <Form.Group controlId="password">
@@ -187,14 +187,15 @@ class SignUp extends Component {
           </div>
           )}
 
-          <Button className="btn hero-btn w-100" type="submit">
-            Submit
+          <Button className="btn hero-btn w-100 mt-2" type="submit">
+            Sign Up
           </Button>
-          <p className="text-center mt-3 font-weight-bolder auth-text">OR</p>
+          <p className="text-center font-weight-bolder auth-text">OR</p>
 
-          <a href="/signin" className="my-3 text-center w-100 btn-link">
-            {' '}
-            Log In
+          <a href="/signin" className="text-center w-100">
+            <Button className="hero-btn w-100 mb-3">
+              Sign In
+            </Button>
           </a>
         </Form>
       </div>

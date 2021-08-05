@@ -86,15 +86,15 @@ class SignIn extends Component {
           </div>
           )}
 
-          <h1 className="auth-header py-5 text-center font-weight-bolder">
+          <h1 className="auth-header py-2 text-center font-weight-bolder">
             Sign In
           </h1>
-          <p className="auth-desc pb-5 font-weight-bolder">
+          {/* <p className="auth-desc font-weight-bolder">
             Hey! Log In to manage your account.
-          </p>
+          </p> */}
         </div>
         <Form
-          className="user-form p-5 shadow-lg bg-white"
+          className="user-form px-5 py-4 shadow-lg bg-white"
           onSubmit={handleSubmit}
         >
           <Form.Group controlId="username" className="pb-3">
@@ -113,9 +113,9 @@ class SignIn extends Component {
               placeholder="Enter email"
               onChange={handleChange}
             />
-            <Form.Text className="text-muted">
+            {/* <Form.Text className="text-muted">
               We will never share your email with anyone else.
-            </Form.Text>
+            </Form.Text> */}
           </Form.Group>
 
           <Form.Group controlId="password" className="pb-5">
@@ -134,12 +134,14 @@ class SignIn extends Component {
           )}
 
           <Button className="btn hero-btn w-100" type="submit">
-            Submit
+            Sign In
           </Button>
           <p className="text-center mt-3 font-weight-bolder auth-text">OR</p>
-          <a href="/signup" className="my-3 text-center w-100 btn-link">
-            {' '}
-            Register
+          <a href="/signup" className="my-3 text-center w-100">
+            {/* {' '} */}
+            <Button className="btn hero-btn w-100">
+              Sign Up
+            </Button>
           </a>
         </Form>
       </div>
