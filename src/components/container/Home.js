@@ -2,11 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../assets/scss/Home.scss';
 import ilus1 from '../../assets/images/ilus1.svg';
-// import ilus2 from '../../assets/images/ilus2.svg';
+import ilus2 from '../../assets/images/ilus2.svg';
+import Header from '../layout-view/Header';
 
 const Home = () => (
   <div className="content">
-    {/* <Header/> */}
+    <Header />
     <div className="hero">
       <h1 className="hero-header">Your quest for a serendipitous cabin begins here</h1>
       #
@@ -74,9 +75,9 @@ const Home = () => (
           </a>
         </div>
 
-        {/* <div className="row">
+        <div className="row">
           <img src={ilus2} className="ilus" alt="illustration 2" />
-        </div> */}
+        </div>
       </div>
     </section>
 

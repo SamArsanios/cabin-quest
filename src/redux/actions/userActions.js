@@ -1,10 +1,11 @@
 import Axios from 'axios';
+import baseURL from './baseURL';
 
 // Create User
 const createUser = (data) => (dispatch) => {
-  const url = 'https://cabinquest-api.herokuapp.com/api/v1/create/signup.json';
+  const url = `${baseURL}/api/v1/users`;
   const userData = {
-    auth: data,
+    user: data,
   };
 
   Axios.post(url, userData)
@@ -22,7 +23,7 @@ const createUser = (data) => (dispatch) => {
 
 // Authorize User
 const authorizeUser = (data) => (dispatch) => {
-  const url = 'https://cabinquest-api.herokuapp.com/api/v1/auth/signin.json';
+  const url = `${baseURL}/api/v1/auth/signin`;
   const userData = {
     auth: data,
   };
@@ -46,28 +47,32 @@ const fetchUser = (username) => (dispatch) => {
   const token = localStorage.getItem('jwt');
 
   const userAxios = Axios.create({
-    baseURL: 'https://cabinquest-api.herokuapp.com',
+    baseURL: `${baseURL}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
-  userAxios.get(`/api/v1/dashboard/${username}.json`)
+  userAxios.get(`/api/v1/dashboard/${username}`)
     .then((res) => dispatch({
       type: 'FETCH_USER',
       payload: res.data,
     }))
-    .catch((err) => dispatch({
-      type: 'CREATE_ERROR',
-      payload: err,
-    }));
+    .then((res) => console.log(res))
+    .catch((err) => {
+      console.log(err);
+      dispatch({
+        type: 'CREATE_ERROR',
+        payload: err,
+      });
+    });
 };
 
 // Fetch User's Favourites
 const fetchUserFavourites = (id) => (dispatch) => {
   const token = localStorage.getItem('jwt');
   const favouriteAxios = Axios.create({
-    baseURL: 'https://cabinquest-api.herokuapp.com',
+    baseURL: `${baseURL}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },

@@ -1,11 +1,12 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable camelcase */
 import Axios from 'axios';
+import baseURL from './baseURL';
 
 const addToFavourites = (data, user) => (dispatch) => {
   const token = localStorage.getItem('jwt');
   const authAxios = Axios.create({
-    baseURL: ' https://cabinquest-api.herokuapp.com',
+    baseURL: `${baseURL}`,
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -53,7 +54,7 @@ const removeFromFavourites = (cabin_id, user) => (dispatch) => {
 
   const token = localStorage.getItem('jwt');
   const authAxios = Axios.create({
-    baseURL: ' https://cabinquest-api.herokuapp.com',
+    baseURL: `${baseURL}`,
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -94,7 +95,7 @@ const removeFromFavourites = (cabin_id, user) => (dispatch) => {
 const uploadImage = (image) => (dispatch) => {
   const token = localStorage.getItem('jwt');
   const userAxios = Axios.create({
-    baseURL: ' https://cabinquest-api.herokuapp.com',
+    baseURL: `${baseURL}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },

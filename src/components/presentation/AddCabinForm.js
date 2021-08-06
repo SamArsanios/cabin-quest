@@ -23,13 +23,13 @@ class AddCabinForm extends Component {
     this.state = {
       name: cabin.name && status === 'Update' ? cabin.name : '',
       country: 'Ug',
-      address: cabin.body && status === 'Update' ? cabin.body.address : '',
+      address: cabin.body && status === 'Update' ? cabin.address : '',
       region: 'K City',
-      image: cabin.body && status === 'Update' ? cabin.body.image : '',
-      location: cabin.body && status === 'Update' ? cabin.body.location : '',
+      image: cabin.body && status === 'Update' ? cabin.image : '',
+      location: cabin.body && status === 'Update' ? cabin.location : '',
       status:
-        cabin.body && status === 'Update' ? cabin.body.status : 'available',
-      user_id: cabin.body && status === 'Update' ? cabin.body.user : 0,
+        cabin.body && status === 'Update' ? cabin.status : 'available',
+      user_id: cabin.body && status === 'Update' ? cabin.user : 0,
     };
   }
 
