@@ -1,14 +1,15 @@
 import { combineReducers } from 'redux';
 import { errorReducer, successReducer } from './utilityReducer';
-import cabinReducer from './cabinReducer';
-
 import userReducer from './userReducer';
+import cabinReducer from './cabinReducer';
+import favReducer from './favReducer';
 
 const rootReducer = combineReducers({
-  data: cabinReducer,
-  error: errorReducer,
   userData: userReducer,
+  data: cabinReducer,
+  favourite: favReducer,
   succMsg: successReducer,
+  error: errorReducer,
 });
 
 export default rootReducer;

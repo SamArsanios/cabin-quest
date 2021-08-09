@@ -25,6 +25,29 @@ const fetchCabin = (id) => (dispatch) => {
         payload: err,
       });
     });
+
+  authorizationAxios
+    .get('/api/v1/favourites.json')
+    .then((res) => {
+      const cabin = res.data.filter((cabin) => cabin.cabin_id === Number(id));
+      console.log(cabin);
+      if (cabin.length) {
+        dispatch({
+          type: 'FAVOURITE_CABIN',
+        });
+      } else {
+        dispatch({
+          type: 'NOT_FAVOURITE_CABIN',
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch({
+        type: 'CREATE_ERROR',
+        payload: err,
+      });
+    });
 };
 
 //   Fetch All Cabins

@@ -166,7 +166,6 @@ class CabinDetails extends Component {
                   </button>
                 )}
               </Card.Title>
-              <h1>HELLO</h1>
               <div className="card-details">
                 <p>Location:</p>
                 <p>{cabin.location}</p>

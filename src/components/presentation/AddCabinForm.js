@@ -59,7 +59,7 @@ class AddCabinForm extends Component {
       cabinImgUrl,
     } = this.props;
 
-    const availability = ['available', 'processing', 'unavailable'];
+    // const availability = ['available', 'processing', 'unavailable'];
     const handleChange = (e) => {
       const { id, value } = e.target;
       this.setState({
@@ -107,7 +107,7 @@ class AddCabinForm extends Component {
     };
 
     const { name, address, location } = this.state;
-    const { status: stateUs } = this.state;
+    // const { status: stateUs } = this.state;
 
     return (
       <div className="form-container">
@@ -143,14 +143,14 @@ class AddCabinForm extends Component {
             />
           </Form.Group>
 
-          <Form.Group controlId="status">
+          {/* <Form.Group controlId="status">
             <Form.Label>Select a Cabin Status</Form.Label>
             <Form.Control as="select" value={stateUs} onChange={handleChange}>
               {availability.map((hstate) => (
                 <option key={hstate}>{hstate}</option>
               ))}
             </Form.Control>
-          </Form.Group>
+          </Form.Group> */}
 
           <Button className="btn hero-btn w-100" type="submit">
             Submit
@@ -178,7 +178,7 @@ AddCabinForm.propTypes = {
 
 const mapStateToProps = (state) => ({
   errors: state.error.err,
-  cabinImgUrl: state.data.cabinImgUrl,
+  cabinImgUrl: state.favourite.cabinImgUrl,
   currentUser: state.userData.currentUser,
   cabin: state.data.cabin,
   loading: state.userData.loading,

@@ -107,13 +107,13 @@ class NavBar extends Component {
                 <NavDropdown.Item href={`/user/favourites/${currentUser.username}`}>
                   <Icofont icon="heart" />
                   {' '}
-                  Favs
+                  Favourites
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Messages</NavDropdown.Item>
+                {/* <NavDropdown.Item href="#action/3.3">Messages</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action/3.4">
                   Notifications
-                </NavDropdown.Item>
+                </NavDropdown.Item> */}
               </NavDropdown>
             </Nav>
           )}

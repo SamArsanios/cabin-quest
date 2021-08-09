@@ -82,11 +82,13 @@ class ImageUploader extends Component {
           )}
 
           {!loading && (
-            <input
+            <button
               type="submit"
               className="btn hero-btn"
-              value={cabinImgUrl.image ? 'Update' : 'Add'}
-            />
+              // value={cabinImgUrl.image ? 'Update' : 'Add'}
+            >
+              Add
+            </button>
           )}
         </form>
         {cabinImgUrl.image && (
