@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../assets/scss/Home.scss';
-import ilus1 from '../../assets/images/ilus1.svg';
-import ilus2 from '../../assets/images/ilus2.svg';
+// import ilus1 from '../../assets/images/ilus1.svg';
+// import ilus2 from '../../assets/images/ilus2.svg';
 import Header from '../layout-view/Header';
 
 const Home = () => (
@@ -10,14 +10,13 @@ const Home = () => (
     <Header />
     <div className="hero">
       <h1 className="hero-header">Your quest for a serendipitous cabin begins here</h1>
-      #
-      <p className="hero-desc">
+      {/* <p className="hero-desc">
         The best offers for you at any point of your journey. A home is
         priceless, let &apos; s offer you an opportunity to make one.
-      </p>
+      </p> */}
       <div className="hero-buttons">
         <Link to="/signin" className="btn shadow-lg hero-btn">
-          Free Trial
+          Join Us
         </Link>
       </div>
     </div>
@@ -46,7 +45,7 @@ const Home = () => (
           </a>
         </div>
         <div className="row">
-          <img src={ilus1} className="ilus" alt="illustration" />
+          <img src="https://images.pexels.com/photos/259571/pexels-photo-259571.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" className="ilus" alt="illustration" />
         </div>
       </div>
     </section>
@@ -76,12 +75,12 @@ const Home = () => (
         </div>
 
         <div className="row">
-          <img src={ilus2} className="ilus" alt="illustration 2" />
+          {/* <img src={ilus2} className="ilus" alt="illustration 2" /> */}
         </div>
       </div>
     </section>
 
-    <section className="pre-footer text-light">
+    {/* <section className="pre-footer text-light">
       <h5 className="text-center font-weight-bolder text-uppercase mb-4">
         Cabin Quest!
       </h5>
@@ -89,7 +88,7 @@ const Home = () => (
         {' '}
         Free Trial
       </Link>
-    </section>
+    </section> */}
   </div>
 );
 
