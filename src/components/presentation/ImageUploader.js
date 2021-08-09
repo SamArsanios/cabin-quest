@@ -61,7 +61,6 @@ class ImageUploader extends Component {
         <h1 className="uploader-header">
           {status}
           {' '}
-          {/* need to add status or remove it man */}
           {' '}
           Image
           {' '}
