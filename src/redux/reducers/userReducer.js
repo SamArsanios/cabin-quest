@@ -4,7 +4,7 @@ const initialState = {
   username: '',
   loggedIn: false,
   currentUser: {},
-  user_favourites: [],
+  userFavourites: [],
 };
 
 const userReducer = (state = initialState, action) => {
@@ -12,7 +12,7 @@ const userReducer = (state = initialState, action) => {
     case 'USER_FAVOURITES':
       return {
         ...state,
-        user_favoUrites: action.payload,
+        userFavourites: action.payload,
       };
     case 'AUTHORIZE_USER':
       const { jwt } = action.payload;

@@ -17,7 +17,6 @@ const fetchCabin = (id) => (dispatch) => {
       type: 'FETCH_CABIN',
       payload: res.data,
     }))
-    .then((res) => console.log('res', res))
     .catch((err) => {
       console.log(err);
       dispatch({

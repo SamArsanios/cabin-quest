@@ -50,10 +50,6 @@ const addToFavourites = (data, user) => (dispatch) => {
 };
 
 const removeFromFavourites = (cabin_id, user) => (dispatch) => {
-  // const fav = user.favourites.filter(
-  //   (favv) => favv.cabin_id == cabin_id.toString(),
-  // );
-
   const token = localStorage.getItem('jwt');
   const authAxios = Axios.create({
     baseURL: `${baseURL}`,
@@ -63,7 +59,6 @@ const removeFromFavourites = (cabin_id, user) => (dispatch) => {
     },
   });
 
-  // const { id } = fav[0];
   const payload = {
     message: 'Cabin was successfully removed from Favourites!',
     type: 'remove_fav',
@@ -71,9 +66,6 @@ const removeFromFavourites = (cabin_id, user) => (dispatch) => {
   authAxios
     .delete(`/api/v1/favourites/${cabin_id}.json`)
     .then(() => {
-      // const newUserFav = user.favourites.filter((userfav) => userfav.id != id);
-      // const newUser = { ...user, favourites: [...newUserFav] };
-
       dispatch({
         type: 'REMOVE_FAVOURITE',
         payload: cabin_id,
@@ -110,10 +102,12 @@ const uploadImage = (image) => (dispatch) => {
 
   userAxios
     .post('/api/v1/image_uploaders.json', image)
-    .then((res) => dispatch({
-      type: 'ADD_IMAGE',
-      payload: res.data,
-    }))
+    .then((res) => {
+      dispatch({
+        type: 'ADD_IMAGE',
+        payload: res.data,
+      });
+    })
     .catch((err) => dispatch({
       type: 'CREATE_ERROR',
       payload: err,
