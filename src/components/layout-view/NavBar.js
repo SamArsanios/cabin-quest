@@ -36,15 +36,15 @@ class NavBar extends Component {
         collapseOnSelect
         expand="lg"
         bg="light"
-        className="mb-5"
+        className="mb-5 px-3"
         variant="light"
       >
         <Navbar.Brand href="/" className="font-weight-bolder">
-          <span className="brand-icon">
+          {/* <span className="brand-icon">
             <Icofont icon="building" />
-          </span>
+          </span> */}
           {' '}
-          Cabin Quest
+          CABIN QUEST
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
