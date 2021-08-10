@@ -6,7 +6,6 @@ const Users = () => (
   <div>
     <Navbar />
     <NavLinks />
-    <div className="container d-flex justify-content-center">Coming Soon!</div>
   </div>
 );
 
