@@ -31,12 +31,16 @@ const CabinLists = (props) => {
           <p>{cabin.location}</p>
         </div>
         <div className="card-details">
-          <p>Country:</p>
-          <p>{cabin.country}</p>
+          <p>Address:</p>
+          <p>{cabin.address}</p>
         </div>
         <div className="card-details">
           <p>Region:</p>
           <p>{cabin.region}</p>
+        </div>
+        <div className="card-details">
+          <p>Country:</p>
+          <p>{cabin.country}</p>
         </div>
 
         <hr />

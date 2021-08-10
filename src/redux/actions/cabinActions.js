@@ -76,7 +76,7 @@ const createCabin = (data) => (dispatch) => {
     cabin: data,
   };
   const payload = {
-    message: 'You have SuccessFully created a Cabin',
+    message: 'You have Successfully created a Cabin',
     type: 'create_cabin',
   };
   authAxios

@@ -160,15 +160,15 @@ class CabinDetails extends Component {
                 <p>{cabin.location}</p>
               </div>
               <div className="card-details">
-                <p>Country:</p>
-                <p>{cabin.country}</p>
+                <p>Address:</p>
+                <p>{cabin.address}</p>
               </div>
               <div className="card-details">
                 <p>Region:</p>
                 <p>{cabin.region}</p>
               </div>
               <hr />
-              {currentUser && currentUser.id === cabin.user ? (
+              {currentUser && currentUser.id === cabin.user_id ? (
                 <div className="card-actions">
                   <AddCabin status="Update" cabin={cabin} />
                   <Button onClick={handleDelete} className="btn btn-danger">

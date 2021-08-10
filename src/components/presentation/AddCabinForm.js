@@ -106,8 +106,7 @@ class AddCabinForm extends Component {
       }
     };
 
-    const { name, address, location } = this.state;
-    // const { status: stateUs } = this.state;
+    const { name, location, address } = this.state;
 
     return (
       <div className="form-container">
