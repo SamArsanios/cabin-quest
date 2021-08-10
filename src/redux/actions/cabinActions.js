@@ -1,10 +1,11 @@
 import Axios from 'axios';
+import baseURL from './baseURL';
 
 //   Fetch Cabin
 const fetchCabin = (id) => (dispatch) => {
   const token = localStorage.getItem('jwt');
   const authorizationAxios = Axios.create({
-    baseURL: ' https://cabinquest-api.herokuapp.com',
+    baseURL: `${baseURL}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -16,15 +17,41 @@ const fetchCabin = (id) => (dispatch) => {
       type: 'FETCH_CABIN',
       payload: res.data,
     }))
-    .catch((err) => dispatch({
-      type: 'CREATE_ERROR',
-      payload: err,
-    }));
+    .catch((err) => {
+      console.log(err);
+      dispatch({
+        type: 'CREATE_ERROR',
+        payload: err,
+      });
+    });
+
+  authorizationAxios
+    .get('/api/v1/favourites.json')
+    .then((res) => {
+      const cabin = res.data.filter((cabin) => cabin.cabin_id === Number(id));
+      console.log(cabin);
+      if (cabin.length) {
+        dispatch({
+          type: 'FAVOURITE_CABIN',
+        });
+      } else {
+        dispatch({
+          type: 'NOT_FAVOURITE_CABIN',
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch({
+        type: 'CREATE_ERROR',
+        payload: err,
+      });
+    });
 };
 
 //   Fetch All Cabins
 const fetchCabins = () => (dispatch) => {
-  const url = ' https://cabinquest-api.herokuapp.com/api/v1/cabins.json';
+  const url = `${baseURL}/api/v1/cabins.json`;
   Axios.get(url)
     .then((res) => dispatch({
       type: 'FETCH_CABINS',
@@ -40,7 +67,7 @@ const fetchCabins = () => (dispatch) => {
 const createCabin = (data) => (dispatch) => {
   const token = localStorage.getItem('jwt');
   const authAxios = Axios.create({
-    baseURL: ' https://cabinquest-api.herokuapp.com',
+    baseURL: `${baseURL}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -49,7 +76,7 @@ const createCabin = (data) => (dispatch) => {
     cabin: data,
   };
   const payload = {
-    message: 'You have SuccessFully created a Cabin',
+    message: 'You have Successfully created a Cabin',
     type: 'create_cabin',
   };
   authAxios
@@ -74,7 +101,7 @@ const createCabin = (data) => (dispatch) => {
 const updateCabin = (data, id) => (dispatch) => {
   const token = localStorage.getItem('jwt');
   const authAxios = Axios.create({
-    baseURL: ' https://cabinquest-api.herokuapp.com',
+    baseURL: `${baseURL}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -109,7 +136,7 @@ const deleteCabin = (id) => (dispatch) => {
   const token = localStorage.getItem('jwt');
 
   const authAxios = Axios.create({
-    baseURL: ' https://cabinquest-api.herokuapp.com',
+    baseURL: `${baseURL}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },

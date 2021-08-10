@@ -32,7 +32,18 @@ const cabinReducer = (state = initialState, action) => {
         loading: false,
         cabin: action.payload,
       };
-
+    case 'FAVOURITE_CABIN':
+      return {
+        ...state,
+        loading: false,
+        fav: true,
+      };
+    case 'NOT_FAVOURITE_CABIN':
+      return {
+        ...state,
+        loading: false,
+        fav: false,
+      };
     case 'CREATE_CABIN':
       return {
         ...state,

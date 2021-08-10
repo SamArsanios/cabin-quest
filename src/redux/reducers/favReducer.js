@@ -1,8 +1,6 @@
 const initialState = {
   loading: true,
   cabins: [],
-  fav: false,
-  cabin: [],
   cabinImgUrl: '',
 };
 
@@ -13,16 +11,20 @@ const fetchReducer = (state = initialState, action) => {
         ...state,
         cabinImgUrl: action.payload,
       };
-    case 'UPDATE_FAV':
+    case 'ADD_FAVOURITE':
       return {
         ...state,
-        fav: true,
+        cabins: [...state.cabins, action.payload],
+      };
+    case 'UPDATE_FAVOURITE':
+      return {
+        ...state,
       };
 
-    case 'REMOVE_FAV':
+    case 'REMOVE_FAVOURITE':
       return {
         ...state,
-        fav: false,
+        cabins: state.cabins.filter((cabin) => cabin.cabin_id !== Number(action.payload)),
       };
     default:
       return state;

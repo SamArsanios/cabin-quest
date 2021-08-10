@@ -4,7 +4,7 @@ $primary-color: rgb(233, 90, 7);
   min-height: 70vh;
   background: rebeccapurple;
   color: white;
-  background-image: url(https://images.unsplash.com/photo-1584467541268-b040f83be3fd?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9);
+  background-image: url(https://images.pexels.com/photos/751546/pexels-photo-751546.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom;
@@ -12,9 +12,9 @@ $primary-color: rgb(233, 90, 7);
 
 .hero {
   position: absolute;
-  top: 30%;
+  top: 35%;
   color: white;
-  background: linear-gradient(0deg, black, transparent);
+  background: linear-gradient(0deg, rgb(228, 160, 15), transparent);
   padding: 3rem;
   max-width: 30rem;
 
@@ -66,7 +66,7 @@ $primary-color: rgb(233, 90, 7);
 .card-details p {
   color: black;
   background: #f9f9f9;
-  padding: 1rem;
+  // padding: 1rem;
   border-radius: 1rem;
   margin: 0.5rem;
 }

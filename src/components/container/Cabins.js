@@ -18,8 +18,8 @@ class Cabins extends Component {
     const { cabins, errors, loading } = this.props;
 
     const cabinsLoad = cabins.length ? (
-      <div className="container-xl">
-        <div className="cabin-container my-4 py-3">
+      <div className="container">
+        <div className="cabin-container m-1 p-1">
           {cabins
             && cabins.map((cabin) => (
               <CabinLists cabin={cabin} key={cabin.id} errors={errors} />
@@ -44,11 +44,15 @@ Cabins.propTypes = {
   fetchCabins: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  cabins: state.data.cabins,
-  loading: state.data.loading,
-  errors: state.error.err,
-  cabin: state.data.cabin,
-});
+const mapStateToProps = (state) => {
+  console.log(state);
+
+  return {
+    cabins: state.data.cabins,
+    loading: state.data.loading,
+    errors: state.error.err,
+    cabin: state.data.cabin,
+  };
+};
 
 export default connect(mapStateToProps, { fetchCabins })(Cabins);

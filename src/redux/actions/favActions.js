@@ -1,11 +1,12 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable camelcase */
 import Axios from 'axios';
+import baseURL from './baseURL';
 
 const addToFavourites = (data, user) => (dispatch) => {
   const token = localStorage.getItem('jwt');
   const authAxios = Axios.create({
-    baseURL: ' https://cabinquest-api.herokuapp.com',
+    baseURL: `${baseURL}`,
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -23,11 +24,13 @@ const addToFavourites = (data, user) => (dispatch) => {
   authAxios
     .post('/api/v1/favourites.json', cabinData)
     .then((res) => {
-      const newUserFav = [...user.favourites, res.data];
-      const curRes = { ...user, favourites: newUserFav };
       dispatch({
-        type: 'UPDATE_FAVOURITE',
-        payload: curRes,
+        type: 'ADD_FAVOURITE',
+        payload: res.data.cabin_id,
+      });
+
+      dispatch({
+        type: 'FAVOURITE_CABIN',
       });
 
       dispatch({
@@ -37,7 +40,7 @@ const addToFavourites = (data, user) => (dispatch) => {
 
       dispatch({
         type: 'FETCH_USER',
-        payload: curRes,
+        payload: user,
       });
     })
     .catch((err) => dispatch({
@@ -47,32 +50,29 @@ const addToFavourites = (data, user) => (dispatch) => {
 };
 
 const removeFromFavourites = (cabin_id, user) => (dispatch) => {
-  const fav = user.favourites.filter(
-    (favv) => favv.cabin_id == cabin_id.toString(),
-  );
-
   const token = localStorage.getItem('jwt');
   const authAxios = Axios.create({
-    baseURL: ' https://cabinquest-api.herokuapp.com',
+    baseURL: `${baseURL}`,
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
   });
 
-  const { id } = fav[0];
   const payload = {
     message: 'Cabin was successfully removed from Favourites!',
     type: 'remove_fav',
   };
   authAxios
-    .delete(`/api/v1/favourites/${id}.json`)
+    .delete(`/api/v1/favourites/${cabin_id}.json`)
     .then(() => {
-      const newUserFav = user.favourites.filter((userfav) => userfav.id != id);
-      const newUser = { ...user, favourites: [...newUserFav] };
+      dispatch({
+        type: 'REMOVE_FAVOURITE',
+        payload: cabin_id,
+      });
 
       dispatch({
-        type: 'REMOVE_FAV',
+        type: 'NOT_FAVOURITE_CABIN',
       });
 
       dispatch({
@@ -82,7 +82,7 @@ const removeFromFavourites = (cabin_id, user) => (dispatch) => {
 
       dispatch({
         type: 'FETCH_USER',
-        payload: newUser,
+        payload: user,
       });
     })
     .catch((err) => dispatch({
@@ -94,7 +94,7 @@ const removeFromFavourites = (cabin_id, user) => (dispatch) => {
 const uploadImage = (image) => (dispatch) => {
   const token = localStorage.getItem('jwt');
   const userAxios = Axios.create({
-    baseURL: ' https://cabinquest-api.herokuapp.com',
+    baseURL: `${baseURL}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -102,10 +102,12 @@ const uploadImage = (image) => (dispatch) => {
 
   userAxios
     .post('/api/v1/image_uploaders.json', image)
-    .then((res) => dispatch({
-      type: 'ADD_IMAGE',
-      payload: res.data,
-    }))
+    .then((res) => {
+      dispatch({
+        type: 'ADD_IMAGE',
+        payload: res.data,
+      });
+    })
     .catch((err) => dispatch({
       type: 'CREATE_ERROR',
       payload: err,

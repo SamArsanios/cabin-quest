@@ -37,7 +37,6 @@ class CabinDetails extends Component {
       fetchCabin, fetchUser, currentUser, match,
     } = this.props;
     const { cabin_id } = match.params;
-
     const jwt = localStorage.getItem('jwt');
     const username = localStorage.getItem('username');
     jwt && username && fetchUser(username);
@@ -90,7 +89,6 @@ class CabinDetails extends Component {
     } = this.props;
     const { favourite_data, favBtn } = this.state;
     const { cabin_id } = match.params;
-
     // Handel Delete Cabin
     const handleDelete = () => {
       unLoad({ loading: true });
@@ -122,21 +120,11 @@ class CabinDetails extends Component {
       removeFromFavourites(cabin_id, currentUser);
     };
 
-    const cabinDetails = cabin.body ? (
+    const cabinDetails = this.props ? (
       <div className="house-content">
         <div className="house-details d-flex justify-content-center">
           <div className="card shadow-lg col-sm-8 col-lg-6 col-xl-4 d-md-flex p-0">
-            <Card.Img variant="top" src={cabin.body.image} />
-            {cabin.body && (
-              <div className="house-status">
-                <div className="house-state">{cabin.body.status}</div>
-                {cabin.body.status === 'available' && (
-                  <button type="button" className="house-btn btn hero-btn">
-                    Make an offer
-                  </button>
-                )}
-              </div>
-            )}
+            <Card.Img variant="top" src={cabin.image} />
             <Card.Body>
               <Card.Title className="text-uppercase text-center font-weight-bolder">
                 {cabin.name}
@@ -162,25 +150,25 @@ class CabinDetails extends Component {
                   >
                     <Icofont icon="heart" />
                     {' '}
-                    Add to Favou/rites
+                    Add to Favourites
                     {' '}
                   </button>
                 )}
               </Card.Title>
               <div className="card-details">
                 <p>Location:</p>
-                <p>{cabin.body.location}</p>
+                <p>{cabin.location}</p>
               </div>
               <div className="card-details">
-                <p>Country:</p>
-                <p>{cabin.body.country}</p>
+                <p>Address:</p>
+                <p>{cabin.address}</p>
               </div>
               <div className="card-details">
                 <p>Region:</p>
-                <p>{cabin.body.region}</p>
+                <p>{cabin.region}</p>
               </div>
               <hr />
-              {currentUser && currentUser.id === cabin.body.user ? (
+              {currentUser && currentUser.id === cabin.user_id ? (
                 <div className="card-actions">
                   <AddCabin status="Update" cabin={cabin} />
                   <Button onClick={handleDelete} className="btn btn-danger">
