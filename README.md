@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Cabin Quest
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- This is the frontend part for the capstone project of Microverse main technical curriculum.
+  This is a cabin finder or locator app where users are able to see a list of different types of cabins and can add them to their favourites. 
 
-## Available Scripts
+<!-- ### Main page
 
-In the project directory, you can run:
+![Photo](./main.png)
 
-### `npm start`
+### Houses page
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![Photo](./house.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Dashboard
 
-### `npm test`
+![Photo](./favourite.png) -->
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Live Demo
 
-### `npm run build`
+- [Live](https://cabinquest.herokuapp.com/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Main Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- A proper authentication system has been implemented using JWT.
+- Users can sign up and sign in to the app.
+- User can see list of cabins listed.
+- User can see details of cabins and they can add them to their favourites.
+- User can add, update and delete their favourites.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## API
 
-### `npm run eject`
+- The backend API for this project created by me and can be found in [github](https://github.com/SamArsanios/cabin-quest-ap).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Built with
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- React
+- Redux
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Getting Started
 
-## Learn More
+- Clone the repo `git@github.com:SamArsanios/cabin-quest.git`
+- cd `into` the project
+- Run `npm install` to install dependencies
+- On the terminal run `npm start` open up the live server
+- To run tests write `npm test` on the terminal
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Author
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+👤 **Samson Kibrom**
 
-### Code Splitting
+- Github: [@SamArsanios](https://github.com/SamArsanios)
+- Twitter: [@SamArsanios](https://twitter.com/SamArsanios)
+- Linkedin: [@Samson](https://www.linkedin.com/in/samson-kibrom)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🤝 Contributing
 
-### Analyzing the Bundle Size
+Contributions, issues and feature requests are welcome!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Feel free to check the [issues page](issues/).
 
-### Making a Progressive Web App
+## Show your support
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Give a ⭐️ if you like this project!
 
-### Advanced Configuration
+## 👏 Acknowledgements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- [Microverse](issues/)
+- All the images of cabins used in this app are taken from [pexels](https://www.pexels.com/) and belong to the respective owners.
+- [Alexey Savitskiy](https://www.behance.net/alexey_savitskiy)
 
-### Deployment
+## 📝 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT License
