@@ -1,5 +1,5 @@
 /* eslint-disable no-case-declarations */
-const initialState = {
+export const initialState = {
   loading: true,
   username: '',
   loggedIn: false,
