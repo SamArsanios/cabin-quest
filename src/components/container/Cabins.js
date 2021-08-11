@@ -44,15 +44,11 @@ Cabins.propTypes = {
   fetchCabins: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
-
-  return {
-    cabins: state.data.cabins,
-    loading: state.data.loading,
-    errors: state.error.err,
-    cabin: state.data.cabin,
-  };
-};
+const mapStateToProps = (state) => ({
+  cabins: state.data.cabins,
+  loading: state.data.loading,
+  errors: state.error.err,
+  cabin: state.data.cabin,
+});
 
 export default connect(mapStateToProps, { fetchCabins })(Cabins);

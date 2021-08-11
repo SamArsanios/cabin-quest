@@ -45,7 +45,7 @@ class Success extends Component {
 }
 
 Success.propTypes = {
-  success: PropTypes.shape,
+  success: PropTypes.string,
   successMessage: PropTypes.func.isRequired,
 };
 

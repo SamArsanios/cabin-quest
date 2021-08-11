@@ -75,7 +75,7 @@ class Errors extends Component {
 }
 
 Errors.propTypes = {
-  errors: PropTypes.shape,
+  errors: PropTypes.string,
   unloadError: PropTypes.func.isRequired,
 };
 

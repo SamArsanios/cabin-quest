@@ -107,7 +107,7 @@ class ImageUploader extends Component {
 ImageUploader.propTypes = {
   cabinImgUrl: PropTypes.any,
   uploadImage: PropTypes.func.isRequired,
-  status: PropTypes.string.isRequired,
+  status: PropTypes.string,
   clearImage: PropTypes.func.isRequired,
 };
 const mapStateToProps = (state) => ({

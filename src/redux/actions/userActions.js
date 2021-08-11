@@ -23,7 +23,7 @@ const createUser = (data) => (dispatch) => {
 
 // Authorize User
 const authorizeUser = (data) => (dispatch) => {
-  const url = `${baseURL}/api/v1/auth/signin`;
+  const url = `${baseURL}/api/v1/auth/signi`;
   const userData = {
     auth: data,
   };

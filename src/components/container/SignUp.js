@@ -205,7 +205,7 @@ class SignUp extends Component {
 
 SignUp.propTypes = {
   currentUser: PropTypes.any,
-  loading: PropTypes.string,
+  loading: PropTypes.bool,
   errors: PropTypes.any,
   loggedIn: PropTypes.any,
   createUser: PropTypes.func.isRequired,
