@@ -33,4 +33,4 @@ const errorReducer = (state = { err: '' }, action) => {
   }
 };
 
-export { successReducer, errorReducer };
+export { successReducer, errorReducer, initialState };
