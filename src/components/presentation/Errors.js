@@ -35,27 +35,27 @@ class Errors extends Component {
           <Alert.Heading>Sorry Something went wrong!</Alert.Heading>
           <div>
             {errors.request && (
-            <h6 className="my-5">{errors.request.response}</h6>
+            <h6 className="my-4">{errors.request.response}</h6>
             )}
 
             {errors.message && (
-            <h6 className="my-5">
+            <h6 className="my-4">
               {errors.message}
               {' '}
             </h6>
             )}
             {errors.response && (
-            <h6 className="my-5">{errors.response.data.error}</h6>
+            <h6 className="my-4">{errors.response.data.error}</h6>
             )}
 
             {errors.response && errors.response.status === 401 && (
-            <h6 className="my-5 text-center">
+            <h6 className="my-4 text-center">
               Your Login session has expired. Kindly login again.
             </h6>
             )}
 
             {errors.response && (
-            <h6 className="my-5">{errors.response.data.error}</h6>
+            <h6 className="my-4">{errors.response.data.error}</h6>
             )}
             <h6 className="content">
               If you are trying to login double check your username,email and

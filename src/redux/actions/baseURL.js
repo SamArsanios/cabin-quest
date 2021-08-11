@@ -1,3 +1,3 @@
-const baseURL = 'https://cabinquest-api.herokuapp.com';
-// https://a983758e3bc2.ngrok.io
+const baseURL = 'https://46cb5d0a596d.ngrok.io';
+// https://cabinquest-api.herokuapp.com
 export default baseURL;
