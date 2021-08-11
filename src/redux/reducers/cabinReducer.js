@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   loading: true,
   cabins: [],
   fav: false,
