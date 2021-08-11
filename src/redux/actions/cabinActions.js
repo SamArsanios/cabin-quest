@@ -18,7 +18,6 @@ const fetchCabin = (id) => (dispatch) => {
       payload: res.data,
     }))
     .catch((err) => {
-      console.log(err);
       dispatch({
         type: 'CREATE_ERROR',
         payload: err,
@@ -29,7 +28,6 @@ const fetchCabin = (id) => (dispatch) => {
     .get('/api/v1/favourites.json')
     .then((res) => {
       const cabin = res.data.filter((cabin) => cabin.cabin_id === Number(id));
-      console.log(cabin);
       if (cabin.length) {
         dispatch({
           type: 'FAVOURITE_CABIN',
@@ -41,7 +39,6 @@ const fetchCabin = (id) => (dispatch) => {
       }
     })
     .catch((err) => {
-      console.log(err);
       dispatch({
         type: 'CREATE_ERROR',
         payload: err,

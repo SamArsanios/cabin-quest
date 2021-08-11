@@ -58,9 +58,7 @@ const fetchUser = (username) => (dispatch) => {
       type: 'FETCH_USER',
       payload: res.data,
     }))
-    .then((res) => console.log(res))
     .catch((err) => {
-      console.log(err);
       dispatch({
         type: 'CREATE_ERROR',
         payload: err,
