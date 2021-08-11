@@ -16,4 +16,3 @@ describe('AddCabin', () => {
     expect(tree).toMatchSnapshot();
   });
 });
-

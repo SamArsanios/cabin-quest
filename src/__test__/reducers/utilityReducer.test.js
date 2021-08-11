@@ -1,4 +1,4 @@
-import {initialState } from '../../redux/reducers/utilityReducer';
+import { initialState } from '../../redux/reducers/utilityReducer';
 
 test('initialState to be as expected', () => {
   expect(initialState).toEqual({
