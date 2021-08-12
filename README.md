@@ -5,12 +5,12 @@
 
  ### Main page
 
-![Photo](src/assets/images/screenshot-1.png)
+![Photo](src/assets/images/screenshot-2.png)
 
 
 ## Live Demo
 
-- [Live](https://cabinquest.herokuapp.com/)
+- [Project Link](https://cabinquest.herokuapp.com/)
 
 ## Main Features
 
@@ -22,7 +22,7 @@
 
 ## API
 
-- The backend API for this project created by me and can be found in [github](https://github.com/SamArsanios/cabin-quest-ap).
+- The backend API for this project can be found [here](https://github.com/SamArsanios/cabin-quest-ap).
 
 ## Built with
 
