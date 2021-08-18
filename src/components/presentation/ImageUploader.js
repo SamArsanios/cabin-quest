@@ -7,8 +7,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Axios from 'axios';
 import { uploadImage, clearImage } from '../../redux/actions/favActions';
 import Loading from './Loading';
+import baseURL from '../../redux/actions/baseURL';
 
 class ImageUploader extends Component {
   constructor(props) {
@@ -16,6 +18,7 @@ class ImageUploader extends Component {
     this.state = {
       loading: false,
       image: {},
+      msg: '',
     };
   }
 
@@ -28,6 +31,31 @@ class ImageUploader extends Component {
         ...this.state,
         loading: false,
       });
+  }
+
+  addImage = (image) => {
+    const token = localStorage.getItem('jwt');
+    const userAxios = Axios.create({
+      baseURL: `${baseURL}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    userAxios
+      .post('/api/v1/image_uploaders.json', image)
+      .then((res) => {
+        if (res.status === 200) {
+          this.setState({
+            msg: 'Successfuly Uploaded Image',
+          });
+        } else {
+          this.setState({
+            msg: 'Error Uploading Image, try again!',
+          });
+        }
+      })
+      .catch((err) => console.log(err));
   }
 
   onChange = (e) => {
@@ -51,11 +79,12 @@ class ImageUploader extends Component {
     const { uploadImage, clearImage } = this.props;
     clearImage();
     uploadImage(form);
+    this.addImage(form);
   };
 
   render() {
     const { cabinImgUrl, status } = this.props;
-    const { loading } = this.state;
+    const { loading, msg } = this.state;
     return (
       <div className="uploader-container">
         <h1 className="uploader-header">
@@ -84,11 +113,13 @@ class ImageUploader extends Component {
             <button
               type="submit"
               className="btn hero-btn"
-              // value={cabinImgUrl.image ? 'Update' : 'Add'}
+              value={cabinImgUrl.image ? 'Update' : 'Add'}
+              // onClick={this.addImage}
             >
               Add
             </button>
           )}
+          <span className="py-2 text-center text-success">{msg}</span>
         </form>
         {cabinImgUrl.image && (
           <div className="uploaded">
