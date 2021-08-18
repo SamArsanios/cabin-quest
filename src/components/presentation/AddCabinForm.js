@@ -7,6 +7,7 @@ import { Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Success from './Success';
 import Errors from './Errors';
 
 import {
@@ -30,6 +31,7 @@ class AddCabinForm extends Component {
       status:
         cabin.body && status === 'Update' ? cabin.status : 'available',
       user_id: cabin.body && status === 'Update' ? cabin.user : 0,
+      msg: '',
     };
   }
 
@@ -55,6 +57,7 @@ class AddCabinForm extends Component {
       unLoad,
       history,
       type,
+      success,
       errors,
       cabinImgUrl,
     } = this.props;
@@ -76,6 +79,7 @@ class AddCabinForm extends Component {
             {
               ...this.state,
               image: cabinImgUrl.image,
+              msg: 'Successfuly Created Cabin',
             },
             () => {
               createCabin(this.state);
@@ -106,12 +110,15 @@ class AddCabinForm extends Component {
       }
     };
 
-    const { name, location, address } = this.state;
+    const {
+      name, location, address, msg,
+    } = this.state;
 
     return (
       <div className="form-container">
         <Form onSubmit={handleSubmit}>
           {errors && <Errors />}
+          {success && <Success /> }
           <Form.Group controlId="name" className="pb-3">
             <Form.Control
               required
@@ -141,16 +148,7 @@ class AddCabinForm extends Component {
               onChange={handleChange}
             />
           </Form.Group>
-
-          {/* <Form.Group controlId="status">
-            <Form.Label>Select a Cabin Status</Form.Label>
-            <Form.Control as="select" value={stateUs} onChange={handleChange}>
-              {availability.map((hstate) => (
-                <option key={hstate}>{hstate}</option>
-              ))}
-            </Form.Control>
-          </Form.Group> */}
-
+          <span className="py-3 text-center text-success">{msg}</span>
           <Button className="btn hero-btn w-100" type="submit">
             Submit
           </Button>
@@ -161,6 +159,7 @@ class AddCabinForm extends Component {
 }
 
 AddCabinForm.propTypes = {
+  success: PropTypes.any,
   errors: PropTypes.any,
   unLoad: PropTypes.any,
   cabinImgUrl: PropTypes.any,
