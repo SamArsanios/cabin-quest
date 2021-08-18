@@ -58,7 +58,7 @@ class Dashboard extends Component {
               <Route exact path="/cabins/:cabin_id" component={CabinDetails} />
               <Route exact path="/user/favourites/:username" component={Favourites} />
               <Route exact path="/users" component={Users} />
-              <Route path="/dashboard/:username" component={Cabins} />
+              <Route exact path="/user/:username" component={Cabins} />
             </Switch>
           </div>
           <Footer />

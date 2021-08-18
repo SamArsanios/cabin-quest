@@ -39,7 +39,7 @@ class SignIn extends Component {
       isSubmit: false,
     });
     jwt && username && fetchUser(username);
-    jwt && loggedIn && history.push(`/dashboard/${username}`);
+    jwt && loggedIn && history.push(`/user/${username}`);
   }
 
   render() {
@@ -72,7 +72,7 @@ class SignIn extends Component {
       authorizeUser(data);
       currentUser
           && loggedIn
-          && history.push(`/dashboard/${currentUser.username}`);
+          && history.push(`/user/${currentUser.username}`);
     };
     const { isSubmit } = this.state;
 

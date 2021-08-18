@@ -34,7 +34,7 @@ class SignUp extends Component {
     } = this.props;
     const jwt = localStorage.getItem('jwt');
     jwt && username && fetchUser(username);
-    jwt && loggedIn && history.push(`/dashboard/${username}`);
+    jwt && loggedIn && history.push(`/user/${username}`);
   }
 
   componentDidUpdate(nextProps) {
@@ -62,7 +62,7 @@ class SignUp extends Component {
 
     const jwt = localStorage.getItem('jwt');
     jwt && userData.username && fetchUser(userData.username);
-    loggedIn && history.push(`/dashboard/${userData.username}`);
+    loggedIn && history.push(`/user/${userData.username}`);
   }
 
   render() {

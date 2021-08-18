@@ -47,7 +47,7 @@ class NavLinks extends Component {
         ) : (
           <Nav className="mobile ">
             <NavLink
-              to={`/dashboard/${currentUser.username}`}
+              to={`/user/${currentUser.username}`}
               className="btn active active nav-btn pr-2"
             >
               <Icofont icon="dashboard mobile-icon" />
@@ -57,11 +57,11 @@ class NavLinks extends Component {
               id="basic-nav-dropdown"
               className="text-center mobile"
             >
-              <NavDropdown.Item href={`/dashboard/${currentUser.username}`}>
+              <NavDropdown.Item href={`/user/${currentUser.username}`}>
                 {currentUser ? currentUser.username : 'Profile'}
               </NavDropdown.Item>
               <NavDropdown.Item href="/users">Users</NavDropdown.Item>
-              <NavDropdown.Item href={`/dashboard/favourites/${currentUser.username}`}>
+              <NavDropdown.Item href={`/user/favourites/${currentUser.username}`}>
                 <Icofont icon="heart" />
                 {' '}
                 Favs

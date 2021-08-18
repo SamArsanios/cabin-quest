@@ -53,7 +53,7 @@ const fetchUser = (username) => (dispatch) => {
     },
   });
 
-  userAxios.get(`/api/v1/dashboard/${username}`)
+  userAxios.get(`/api/v1/user/${username}`)
     .then((res) => dispatch({
       type: 'FETCH_USER',
       payload: res.data,

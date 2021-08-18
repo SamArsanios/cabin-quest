@@ -66,7 +66,7 @@ class NavBar extends Component {
           ) : (
             <Nav>
               <NavLink
-                to={`/dashboard/${username}`}
+                to={`/user/${username}`}
                 className="btn nav-btn pr-2"
               >
                 Dashboard
@@ -100,7 +100,7 @@ class NavBar extends Component {
                 id="basic-nav-dropdown"
                 className="text-center"
               >
-                <NavDropdown.Item href={`/dashboard/${currentUser.username}`}>
+                <NavDropdown.Item href={`/user/${currentUser.username}`}>
                   {currentUser ? currentUser.username : 'Profile'}
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/users">Users</NavDropdown.Item>

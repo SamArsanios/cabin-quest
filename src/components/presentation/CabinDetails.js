@@ -71,7 +71,7 @@ class CabinDetails extends Component {
     }
 
     type === 'delete_cabin'
-      && history.push(`/dashboard/${currentUser.username}`);
+      && history.push(`/user/${currentUser.username}`);
   }
 
   render() {
