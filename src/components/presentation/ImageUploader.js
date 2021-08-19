@@ -114,7 +114,6 @@ class ImageUploader extends Component {
               type="submit"
               className="btn hero-btn"
               value={cabinImgUrl.image ? 'Update' : 'Add'}
-              // onClick={this.addImage}
             >
               Add
             </button>

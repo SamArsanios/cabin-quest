@@ -62,7 +62,6 @@ class AddCabinForm extends Component {
       cabinImgUrl,
     } = this.props;
 
-    // const availability = ['available', 'processing', 'unavailable'];
     const handleChange = (e) => {
       const { id, value } = e.target;
       this.setState({
