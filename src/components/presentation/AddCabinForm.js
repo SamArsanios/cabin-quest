@@ -177,9 +177,10 @@ const mapStateToProps = (state) => ({
   errors: state.error.err,
   cabinImgUrl: state.favourite.cabinImgUrl,
   currentUser: state.userData.currentUser,
-  cabin: state.data.cabin,
-  loading: state.userData.loading,
+  cabin: state.cabin.cabin,
+  // loading: state.userData.loading,
   type: state.succMsg.type,
+  loading: state.data.loading,
 });
 
 const ShowTheLocationWithRouter = withRouter(AddCabinForm);
