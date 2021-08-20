@@ -4,16 +4,10 @@ export const initialState = {
   username: '',
   loggedIn: false,
   currentUser: {},
-  userFavourites: [],
 };
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'USER_FAVOURITES':
-      return {
-        ...state,
-        userFavourites: action.payload,
-      };
     case 'AUTHORIZE_USER':
       const { jwt } = action.payload;
       localStorage.setItem('jwt', jwt);

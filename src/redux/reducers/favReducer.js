@@ -14,7 +14,7 @@ const fetchReducer = (state = initialState, action) => {
     case 'ADD_FAVOURITE':
       return {
         ...state,
-        cabins: [...state.cabins, action.payload],
+        cabins: action.payload,
       };
     case 'UPDATE_FAVOURITE':
       return {
