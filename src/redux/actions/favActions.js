@@ -30,6 +30,11 @@ const addToFavourites = (data, user) => (dispatch) => {
       });
 
       dispatch({
+        type: 'FETCH_CABIN',
+        payload: res.data.cabin_id,
+      });
+
+      dispatch({
         type: 'FAVOURITE_CABIN',
       });
 

@@ -77,10 +77,12 @@ const fetchUserFavourites = (id) => (dispatch) => {
   });
 
   favouriteAxios.get(`/api/v1/user/${id}/favourites.json`)
-    .then((res) => dispatch({
-      type: 'USER_FAVOURITES',
-      payload: res.data,
-    }))
+    .then((res) => {
+      dispatch({
+        type: 'ADD_FAVOURITE',
+        payload: res.data,
+      });
+    })
     .catch((err) => dispatch({
       type: 'CREATE_ERROR',
       payload: err,
