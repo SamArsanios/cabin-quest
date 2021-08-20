@@ -25,10 +25,8 @@ class CabinDetails extends Component {
     this.state = {
       favBtn: false,
       favourite: false,
-      favourite_data: {
-        user_id: 0,
-        cabin: 0,
-      },
+      user_id: 0,
+      cabin: 0,
     };
   }
 
@@ -41,15 +39,11 @@ class CabinDetails extends Component {
     const username = localStorage.getItem('username');
     jwt && username && fetchUser(username);
     fetchCabin(cabin_id);
-    const { favourite_data } = this.state;
 
     this.setState({
       ...this.state,
-      favourite_data: {
-        ...favourite_data,
-        user_id: currentUser.id,
-        cabin_id,
-      },
+      user_id: currentUser.id,
+      cabin_id,
     });
   }
 
@@ -71,7 +65,7 @@ class CabinDetails extends Component {
     }
 
     type === 'delete_cabin'
-      && history.push(`/user/${currentUser.username}`);
+      && history.push(`/dashboard/${currentUser.username}`);
   }
 
   render() {
@@ -87,7 +81,7 @@ class CabinDetails extends Component {
       unLoad,
       removeFromFavourites,
     } = this.props;
-    const { favourite_data, favBtn } = this.state;
+    const { favBtn } = this.state;
     const { cabin_id } = match.params;
     // Handel Delete Cabin
     const handleDelete = () => {
@@ -101,14 +95,11 @@ class CabinDetails extends Component {
         {
           ...this.state,
           favBtn: true,
-          favourite_data: {
-            ...favourite_data,
-            user_id: currentUser.id,
-            cabin_id,
-          },
+          user_id: currentUser.id,
+          cabin_id,
         },
         () => {
-          addToFavourites(favourite_data, currentUser);
+          addToFavourites(this.state, currentUser);
         },
       );
     };
@@ -212,12 +203,12 @@ CabinDetails.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  cabin: state.data.cabin,
+  cabin: state.cabin.cabin,
   errors: state.error.err,
   type: state.succMsg.type,
   currentUser: state.userData.currentUser,
   loading: state.data.loading,
-  fav: state.data.fav,
+  fav: state.cabin.fav,
   loggedIn: state.userData.loggedIn,
 });
 

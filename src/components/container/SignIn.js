@@ -18,11 +18,9 @@ class SignIn extends Component {
     this.state = {
       isSubmit: false,
       err: false,
-      data: {
-        username: '',
-        email: '',
-        password: '',
-      },
+      username: '',
+      email: '',
+      password: '',
     };
   }
 
@@ -42,38 +40,36 @@ class SignIn extends Component {
     jwt && loggedIn && history.push(`/user/${username}`);
   }
 
-  render() {
-    const handleChange = (e) => {
-      const { id, value } = e.target;
-      const { data } = this.state;
-      this.setState({
-        ...this.state,
-        data: {
-          ...data,
-          [id]: value,
-        },
-      });
-    };
-
+  handleSubmit = (e) => {
     const {
       authorizeUser,
       currentUser,
       loggedIn,
-      errors,
       history,
     } = this.props;
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      this.setState({
-        isSubmit: true,
-      });
-      const { data } = this.state;
-      authorizeUser(data);
-      currentUser
-          && loggedIn
-          && history.push(`/user/${currentUser.username}`);
-    };
+    e.preventDefault();
+    this.setState({
+      isSubmit: true,
+    });
+
+    authorizeUser(this.state);
+    currentUser
+        && loggedIn
+        && history.push(`/user/${currentUser.username}`);
+  };
+
+  handleChange = (e) => {
+    const { id, value } = e.target;
+    this.setState({
+      ...this.state,
+      [id]: value,
+    });
+  };
+
+  render() {
+    const { errors } = this.props;
+
     const { isSubmit } = this.state;
 
     return (
@@ -95,14 +91,14 @@ class SignIn extends Component {
         </div>
         <Form
           className="user-form px-5 py-4 shadow-lg bg-white"
-          onSubmit={handleSubmit}
+          onSubmit={this.handleSubmit}
         >
           <Form.Group controlId="username" className="pb-3">
             <Form.Control
               required
               type="username"
               placeholder="Enter Username"
-              onChange={handleChange}
+              onChange={this.handleChange}
             />
           </Form.Group>
 
@@ -111,7 +107,7 @@ class SignIn extends Component {
               required
               type="email"
               placeholder="Enter email"
-              onChange={handleChange}
+              onChange={this.handleChange}
             />
             {/* <Form.Text className="text-muted">
               We will never share your email with anyone else.
@@ -123,7 +119,7 @@ class SignIn extends Component {
               required
               type="password"
               placeholder="Password"
-              onChange={handleChange}
+              onChange={this.handleChange}
             />
           </Form.Group>
 

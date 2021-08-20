@@ -48,7 +48,6 @@ const mapStateToProps = (state) => ({
   cabins: state.data.cabins,
   loading: state.data.loading,
   errors: state.error.err,
-  cabin: state.data.cabin,
 });
 
 export default connect(mapStateToProps, { fetchCabins })(Cabins);

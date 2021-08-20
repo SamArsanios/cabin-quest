@@ -121,7 +121,7 @@ const mapStateToProps = (state) => ({
   errors: state.error.err,
   currentUser: state.userData.currentUser,
   loading: state.userData.loading,
-  favourites: state.userData.userFavourites,
+  favourites: state.favourite.cabins,
 });
 
 export default connect(mapStateToProps, { fetchUser, fetchUserFavourites })(Favourites);
