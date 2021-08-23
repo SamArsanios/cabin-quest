@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { fetchUser, fetchUserFavourites } from '../../redux/actions/userActions';
+import { fetchUserFavourites } from '../../redux/actions/userActions';
 import Loading from '../presentation/Loading';
 import Errors from '../presentation/Errors';
 
@@ -18,10 +18,10 @@ class Favourites extends Component {
     this.state = {
       userFavsLoaded: false,
     };
-    const { fetchUser } = props;
-    const username = localStorage.getItem('username');
-    const jwt = localStorage.getItem('jwt');
-    jwt && username && fetchUser(username);
+    // const { fetchUser } = props;
+    // const username = localStorage.getItem('username');
+    // const jwt = localStorage.getItem('jwt');
+    // jwt && username && fetchUser(username);
   }
 
   componentDidMount() {
@@ -33,13 +33,16 @@ class Favourites extends Component {
       errors.response.status === 401 && history.push('/signin');
     }
 
-    currentUser.id && fetchUserFavourites(currentUser.id);
+    // currentUser.id && fetchUserFavourites(currentUser.id);
+    if (currentUser.id) {
+      fetchUserFavourites();
+    }
   }
 
   componentDidUpdate() {
     const { currentUser, fetchUserFavourites } = this.props;
     if (currentUser && !this.state.userFavsLoaded) {
-      fetchUserFavourites(currentUser.id);
+      fetchUserFavourites();
       this.setState({
         userFavsLoaded: true,
       });
@@ -69,9 +72,9 @@ class Favourites extends Component {
                   <div className="house-status">
                     <div className="house-state">{fav.status}</div>
                     {fav.status === 'available' && (
-                    <button type="button" className="house-btn btn hero-btn">
-                      Make an offer
-                    </button>
+                      <button type="button" className="house-btn btn hero-btn">
+                        Make an offer
+                      </button>
                     )}
                   </div>
                   <Card.Body className="mb-5">
@@ -111,7 +114,7 @@ Favourites.propTypes = {
   errors: PropTypes.any,
   loading: PropTypes.any,
   history: PropTypes.any,
-  fetchUser: PropTypes.func.isRequired,
+  // fetchUser: PropTypes.func.isRequired,
   currentUser: PropTypes.any,
   favourites: PropTypes.any,
   fetchUserFavourites: PropTypes.func.isRequired,
@@ -124,4 +127,4 @@ const mapStateToProps = (state) => ({
   favourites: state.favourite.cabins,
 });
 
-export default connect(mapStateToProps, { fetchUser, fetchUserFavourites })(Favourites);
+export default connect(mapStateToProps, { fetchUserFavourites })(Favourites);

@@ -1,23 +1,24 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/require-default-props */
+/* eslint-disable */
 import React, { Component } from 'react';
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Icofont from 'react-icofont';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
-import { fetchUser } from '../../redux/actions/userActions';
+// import { fetchUser } from '../../redux/actions/userActions';
 import AddCabin from '../presentation/AddCabin';
 import '../../assets/scss/NavBar.scss';
 
 class NavBar extends Component {
-  componentDidMount() {
-    const jwt = localStorage.getItem('jwt');
-    const { fetchUser } = this.props;
-    const username = localStorage.getItem('username');
-    jwt && username && fetchUser(username);
-  }
+  // componentDidMount() {
+  //   // const jwt = localStorage.getItem('jwt');
+  //   // const { fetchUser } = this.props;
+  //   // const username = localStorage.getItem('username');
+  //   // jwt && username && fetchUser(username);
+  // }
 
   render() {
     const jwt = localStorage.getItem('jwt');
@@ -124,7 +125,7 @@ class NavBar extends Component {
 }
 
 NavBar.propTypes = {
-  fetchUser: PropTypes.func.isRequired,
+  // fetchUser: PropTypes.func.isRequired,
   history: PropTypes.any,
   currentUser: PropTypes.any,
 };
@@ -137,4 +138,4 @@ const mapStateToProps = (state) => ({
 });
 const ShowTheLocationWithRouter = withRouter(NavBar);
 
-export default connect(mapStateToProps, { fetchUser })(ShowTheLocationWithRouter);
+export default connect(mapStateToProps)(ShowTheLocationWithRouter);

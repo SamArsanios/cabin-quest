@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button, Card } from 'react-bootstrap';
 import Icofont from 'react-icofont';
-import { fetchUser } from '../../redux/actions/userActions';
+// import { fetchUser } from '../../redux/actions/userActions';
 import { fetchCabin, deleteCabin, unLoad } from '../../redux/actions/cabinActions';
 import { addToFavourites, removeFromFavourites, isFavourite } from '../../redux/actions/favActions';
 import AddCabin from './AddCabin';
@@ -32,12 +32,12 @@ class CabinDetails extends Component {
 
   componentDidMount() {
     const {
-      fetchCabin, fetchUser, currentUser, match,
+      fetchCabin, currentUser, match,
     } = this.props;
     const { cabin_id } = match.params;
-    const jwt = localStorage.getItem('jwt');
-    const username = localStorage.getItem('username');
-    jwt && username && fetchUser(username);
+    // const jwt = localStorage.getItem('jwt');
+    // const username = localStorage.getItem('username');
+    // jwt && username && fetchUser(username);
     fetchCabin(cabin_id);
 
     this.setState({
@@ -192,7 +192,7 @@ CabinDetails.propTypes = {
   fav: PropTypes.any,
   username: PropTypes.any,
   currentUser: PropTypes.any,
-  fetchUser: PropTypes.func.isRequired,
+  // fetchUser: PropTypes.func.isRequired,
   fetchCabin: PropTypes.func.isRequired,
   deleteCabin: PropTypes.func.isRequired,
   addToFavourites: PropTypes.func.isRequired,
@@ -213,7 +213,7 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  fetchUser,
+  // fetchUser,
   fetchCabin,
   deleteCabin,
   addToFavourites,

@@ -25,7 +25,9 @@ class Dashboard extends Component {
     } = this.props;
 
     const { username } = match.params;
-    jwt && username && !currentUser.id && fetchUser(username);
+    // jwt && username && !currentUser.id && fetchUser(username);
+    fetchUser(username);
+    fetchCabins();
 
     !jwt && !currentUser.id && history.push('/signin');
     if (errors.response) {
@@ -35,7 +37,6 @@ class Dashboard extends Component {
 
   componentDidUpdate() {
     const jwt = localStorage.getItem('jwt');
-
     const { errors, history, currentUser } = this.props;
     !jwt && !currentUser.id && history.push('/signin');
     fetchCabins();
@@ -51,7 +52,7 @@ class Dashboard extends Component {
         <BrowserRouter>
           <NavBar />
           <NavLinks />
-          {success && <Success /> }
+          {success && <Success />}
           <div className="container-fluid card-list">
             <Switch>
               <Route exact path="/" component={Home} />
