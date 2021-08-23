@@ -7,7 +7,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button, Form } from 'react-bootstrap';
-import { createUser, fetchUser, authorizeUser } from '../../redux/actions/userActions';
+import { Link } from 'react-router-dom';
+import { createUser, authorizeUser } from '../../redux/actions/userActions';
 import { unLoad } from '../../redux/actions/cabinActions';
 import Loading from '../presentation/Loading';
 import Errors from '../presentation/Errors';
@@ -30,10 +31,10 @@ class SignUp extends Component {
 
   componentDidMount() {
     const {
-      loggedIn, username, history, fetchUser,
+      loggedIn, username, history,
     } = this.props;
     const jwt = localStorage.getItem('jwt');
-    jwt && username && fetchUser(username);
+    // jwt && username && fetchUser(username);
     jwt && loggedIn && history.push(`/user/${username}`);
   }
 
@@ -60,8 +61,8 @@ class SignUp extends Component {
       }
     }
 
-    const jwt = localStorage.getItem('jwt');
-    jwt && userData.username && fetchUser(userData.username);
+    // const jwt = localStorage.getItem('jwt');
+    // jwt && userData.username && fetchUser(userData.username);
     loggedIn && history.push(`/user/${userData.username}`);
   }
 
@@ -192,11 +193,11 @@ class SignUp extends Component {
           </Button>
           <p className="text-center font-weight-bolder auth-text">OR</p>
 
-          <a href="/signin" className="text-center w-100">
+          <Link to="/signin" className="text-center w-100">
             <Button className="hero-btn w-100 mb-3">
               Sign In
             </Button>
-          </a>
+          </Link>
         </Form>
       </div>
     );
@@ -211,7 +212,7 @@ SignUp.propTypes = {
   createUser: PropTypes.func.isRequired,
   username: PropTypes.any,
   authorizeUser: PropTypes.func.isRequired,
-  fetchUser: PropTypes.func.isRequired,
+  // fetchUser: PropTypes.func.isRequired,
   unLoad: PropTypes.func.isRequired,
   history: PropTypes.any,
 };
@@ -224,5 +225,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  createUser, fetchUser, authorizeUser, unLoad,
+  createUser, authorizeUser, unLoad,
 })(SignUp);

@@ -8,7 +8,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button, Form } from 'react-bootstrap';
-import { fetchUser, authorizeUser } from '../../redux/actions/userActions';
+import { Link } from 'react-router-dom';
+import { authorizeUser } from '../../redux/actions/userActions';
 import Errors from '../presentation/Errors';
 import Loading from '../presentation/Loading';
 
@@ -36,7 +37,7 @@ class SignIn extends Component {
       ...this.state,
       isSubmit: false,
     });
-    jwt && username && fetchUser(username);
+    // jwt && username && fetchUser(username);
     jwt && loggedIn && history.push(`/user/${username}`);
   }
 
@@ -133,12 +134,12 @@ class SignIn extends Component {
             Sign In
           </Button>
           <p className="text-center mt-3 font-weight-bolder auth-text">OR</p>
-          <a href="/signup" className="my-3 text-center w-100">
+          <Link to="/signup" className="my-3 text-center w-100">
             {/* {' '} */}
             <Button className="btn hero-btn w-100">
               Sign Up
             </Button>
-          </a>
+          </Link>
         </Form>
       </div>
     );
