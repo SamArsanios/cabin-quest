@@ -23,21 +23,24 @@ const fetchCabin = (id) => (dispatch) => {
         payload: err,
       });
     });
+};
+
+//   Fetch Favourites
+const fetchFavourites = () => (dispatch) => {
+  const token = localStorage.getItem('jwt');
+  const authorizationAxios = Axios.create({
+    baseURL: `${baseURL}`,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
   authorizationAxios
     .get('/api/v1/favourites.json')
-    .then((res) => {
-      const cabin = res.data.filter((cabin) => cabin.cabin_id === Number(id));
-      if (cabin.length) {
-        dispatch({
-          type: 'FAVOURITE_CABIN',
-        });
-      } else {
-        dispatch({
-          type: 'NOT_FAVOURITE_CABIN',
-        });
-      }
-    })
+    .then((res) => dispatch({
+      type: 'FAVOURITE_CABIN',
+      payload: res.data,
+    }))
     .catch((err) => {
       dispatch({
         type: 'CREATE_ERROR',
@@ -48,8 +51,15 @@ const fetchCabin = (id) => (dispatch) => {
 
 //   Fetch All Cabins
 const fetchCabins = () => (dispatch) => {
+  const token = localStorage.getItem('jwt');
+  const authorizationAxios = Axios.create({
+    baseURL: `${baseURL}`,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
   const url = `${baseURL}/api/v1/cabins.json`;
-  Axios.get(url)
+  authorizationAxios.get(url)
     .then((res) => dispatch({
       type: 'FETCH_CABINS',
       payload: res.data,
@@ -169,5 +179,5 @@ const unLoad = (states) => (dispatch) => {
 };
 
 export {
-  fetchCabin, fetchCabins, createCabin, updateCabin, deleteCabin, unLoad,
+  fetchCabin, fetchCabins, createCabin, updateCabin, deleteCabin, unLoad, fetchFavourites,
 };

@@ -42,8 +42,9 @@ const authorizeUser = (data) => (dispatch) => {
     }));
 };
 
-// Fetch User
-const fetchUser = (username) => (dispatch) => {
+// Fetch
+// const fetchUser = (username) => (dispatch) => {
+const fetchUser = () => (dispatch) => {
   const token = localStorage.getItem('jwt');
 
   const userAxios = Axios.create({
@@ -53,7 +54,7 @@ const fetchUser = (username) => (dispatch) => {
     },
   });
 
-  userAxios.get(`/api/v1/user/${username}`)
+  userAxios.get('/api/v1/users/')
     .then((res) => dispatch({
       type: 'FETCH_USER',
       payload: res.data,
@@ -67,7 +68,7 @@ const fetchUser = (username) => (dispatch) => {
 };
 
 // Fetch User's Favourites
-const fetchUserFavourites = (id) => (dispatch) => {
+const fetchUserFavourites = () => (dispatch) => {
   const token = localStorage.getItem('jwt');
   const favouriteAxios = Axios.create({
     baseURL: `${baseURL}`,
@@ -76,7 +77,7 @@ const fetchUserFavourites = (id) => (dispatch) => {
     },
   });
 
-  favouriteAxios.get(`/api/v1/user/${id}/favourites.json`)
+  favouriteAxios.get('/api/v1/favourites')
     .then((res) => {
       dispatch({
         type: 'ADD_FAVOURITE',
