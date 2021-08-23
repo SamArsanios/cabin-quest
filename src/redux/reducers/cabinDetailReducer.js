@@ -1,6 +1,6 @@
 export const initialState = {
   loading: true,
-  cabin: [],
+  cabin: {},
   fav: false,
   cabinImgUrl: '',
 };
