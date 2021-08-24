@@ -75,7 +75,7 @@ class ImageUploader extends Component {
     const { image } = this.state;
 
     const form = new FormData();
-    form.append('image', image[0]);
+    form.append('uploader[image]', image[0]);
     const { uploadImage, clearImage } = this.props;
     clearImage();
     uploadImage(form);
@@ -94,7 +94,7 @@ class ImageUploader extends Component {
           Image
           {' '}
         </h1>
-        <form onSubmit={this.onSubmit} className="uploader-form">
+        <form name="uploader" onSubmit={this.onSubmit} className="uploader-form">
           {!loading ? (
             <div className="uploader-input">
               <input type="file" name="image" onChange={this.onChange} />
