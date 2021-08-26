@@ -1,29 +1,34 @@
 import Axios from 'axios';
 import baseURL from './baseURL';
+import { getBuilder } from './actionHelper';
+
+const fetchCabin = (id) => {
+  getBuilder.get(`/api/v1/cabins/${id}.json`, 'FETCH_CABIN');
+};
 
 //   Fetch Cabin
-const fetchCabin = (id) => (dispatch) => {
-  const token = localStorage.getItem('jwt');
-  const authorizationAxios = Axios.create({
-    baseURL: `${baseURL}`,
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+// const fetchCabin = (id) => (dispatch) => {
+//   const token = localStorage.getItem('jwt');
+//   const authorizationAxios = Axios.create({
+//     baseURL: `${baseURL}`,
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//     },
+//   });
 
-  authorizationAxios
-    .get(`/api/v1/cabins/${id}.json`)
-    .then((res) => dispatch({
-      type: 'FETCH_CABIN',
-      payload: res.data,
-    }))
-    .catch((err) => {
-      dispatch({
-        type: 'CREATE_ERROR',
-        payload: err,
-      });
-    });
-};
+//   authorizationAxios
+//     .get(`/api/v1/cabins/${id}.json`)
+//     .then((res) => dispatch({
+//       type: 'FETCH_CABIN',
+//       payload: res.data,
+//     }))
+//     .catch((err) => {
+//       dispatch({
+//         type: 'CREATE_ERROR',
+//         payload: err,
+//       });
+//     });
+// };
 
 //   Fetch Favourites
 const fetchFavourites = () => (dispatch) => {
