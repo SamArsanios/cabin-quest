@@ -91,7 +91,7 @@ const queryBuilder = () => {
       }));
   };
 
-  const deletes = (id, address, type) => (dispatch) => {
+  const deletes = (address, type) => (dispatch) => {
     const token = localStorage.getItem('jwt');
 
     const authAxios = Axios.create({

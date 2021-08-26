@@ -1,30 +1,17 @@
-// import Axios from 'axios';
 import baseURL from './baseURL';
 import queryBuilder from './actionHelper';
 
-const fetchCabin = (id) => {
-  queryBuilder.get(`/api/v1/cabins/${id}.json`, 'FETCH_CABIN');
-};
+const fetchCabin = (id) => queryBuilder().get(`/api/v1/cabins/${id}.json`, 'FETCH_CABIN');
 
-const fetchCabins = () => {
-  queryBuilder.get(`${baseURL}/api/v1/cabins.json`, 'FETCH_CABINS');
-};
+const fetchCabins = () => queryBuilder().get(`${baseURL}/api/v1/cabins.json`, 'FETCH_CABINS');
 
-const fetchFavourites = () => {
-  queryBuilder.get('/api/v1/favourites.json', 'FAVOURITE_CABIN');
-};
+const fetchFavourites = () => queryBuilder().get('/api/v1/favourites.json', 'FAVOURITE_CABIN');
 
-const createCabin = (data) => {
-  queryBuilder.post(data, '/api/v1/cabins.json', 'SUCCESS_MESSAGE');
-};
+const createCabin = (data) => queryBuilder().post(data, '/api/v1/cabins.json', 'SUCCESS_MESSAGE');
 
-const updateCabin = (data, id) => {
-  queryBuilder.updateCabin(data, `/api/v1/cabins/${id}.json`, 'UPDATE_CABIN');
-};
+const updateCabin = (data, id) => queryBuilder().update(data, `/api/v1/cabins/${id}.json`, 'UPDATE_CABIN');
 
-const deleteCabin = (id) => {
-  queryBuilder.deletes(`/api/v1/cabins/${id}.json`, 'DELETE_CABIN');
-};
+const deleteCabin = (id) => queryBuilder().deletes(`/api/v1/cabins/${id}.json`, 'DELETE_CABIN');
 
 //   Fetch Cabin
 // const fetchCabin = (id) => (dispatch) => {
