@@ -24,6 +24,108 @@ const queryBuilder = () => {
         });
       });
   };
+
+  const post = (data, address, type) => (dispatch) => {
+    const token = localStorage.getItem('jwt');
+    const authAxios = Axios.create({
+      baseURL: `${baseURL}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const cabinData = {
+      cabin: data,
+    };
+    const payload = {
+      message: 'You have Successfully created a Cabin',
+      type: 'create_cabin',
+    };
+    authAxios
+      .post(address, cabinData)
+      .then((res) => {
+        dispatch({
+          type,
+          payload,
+        });
+        dispatch({
+          type: 'FETCH_CABIN',
+          payload: res.data,
+        });
+      })
+      .catch((err) => dispatch({
+        type: 'CREATE_ERROR',
+        payload: err,
+      }));
+  };
+
+  const update = (data, address, type) => (dispatch) => {
+    const token = localStorage.getItem('jwt');
+    const authAxios = Axios.create({
+      baseURL: `${baseURL}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const cabinData = {
+      cabin: data,
+    };
+    const payload = {
+      message: 'You have successfully updated a Cabin!',
+      type: 'update_cabin',
+    };
+    authAxios
+      .patch(address, cabinData)
+      .then((res) => {
+        dispatch({
+          type: 'SUCCESS_MESSAGE',
+          payload,
+        });
+        dispatch({
+          type,
+          payload: res.data,
+        });
+      })
+      .catch((err) => dispatch({
+        type: 'CREATE_ERROR',
+        payload: err,
+      }));
+  };
+
+  const deletes = (id, address, type) => (dispatch) => {
+    const token = localStorage.getItem('jwt');
+
+    const authAxios = Axios.create({
+      baseURL: `${baseURL}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const payload = {
+      message: 'You have successfully deleted the cabin.',
+      type: 'delete_cabin',
+    };
+    authAxios
+      .delete(address)
+      .then((res) => {
+        dispatch({
+          type: 'SUCCESS_MESSAGE',
+          payload,
+        });
+
+        dispatch({
+          type,
+          payload: res.data,
+        });
+      })
+      .catch((err) => dispatch({
+        type: 'CREATE_ERROR',
+        payload: err,
+      }));
+  };
+
+  return {
+    get, post, update, deletes,
+  };
 };
 
-export { queryBuilder };
+export default queryBuilder;
