@@ -123,8 +123,26 @@ const queryBuilder = () => {
       }));
   };
 
+  const postUser = (data, url, type) => (dispatch) => {
+    const url = `${baseURL}/api/v1/users`;
+    const userData = {
+      user: data,
+    };
+
+    Axios.post(url, userData)
+      .then((res) => {
+        dispatch({
+          type,
+          payload: res.data,
+        });
+      })
+      .catch((err) => dispatch({
+        type: 'CREATE_ERROR',
+        payload: err,
+      }));
+  };
   return {
-    get, post, update, deletes,
+    get, post, update, deletes, postUser,
   };
 };
 
