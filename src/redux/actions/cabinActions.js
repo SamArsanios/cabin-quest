@@ -1,9 +1,9 @@
 import Axios from 'axios';
 import baseURL from './baseURL';
-import { getBuilder } from './actionHelper';
+import { queryBuilder } from './actionHelper';
 
 const fetchCabin = (id) => {
-  getBuilder.get(`/api/v1/cabins/${id}.json`, 'FETCH_CABIN');
+  queryBuilder.get(`/api/v1/cabins/${id}.json`, 'FETCH_CABIN');
 };
 
 //   Fetch Cabin

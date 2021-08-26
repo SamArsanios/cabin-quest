@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import baseURL from './baseURL';
 
-const getBuilder = () => {
+const queryBuilder = () => {
   const get = (address, type) => (dispatch) => {
     const token = localStorage.getItem('jwt');
     const authorizationAxios = Axios.create({
@@ -26,4 +26,4 @@ const getBuilder = () => {
   };
 };
 
-export { getBuilder };
+export { queryBuilder };
