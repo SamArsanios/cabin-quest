@@ -1,6 +1,7 @@
+/* eslint-disable camelcase */
 import Axios from 'axios';
 import baseURL from './baseURL';
-/* eslint-disable camelcase */
+
 const queryBuilder = () => {
   const get = (address, type) => (dispatch) => {
     const token = localStorage.getItem('jwt');
@@ -142,6 +143,26 @@ const queryBuilder = () => {
       }));
   };
 
+  const authorizeUser = (data) => (dispatch) => {
+    const url = `${baseURL}/user_token`;
+    const userData = {
+      auth: data,
+    };
+
+    Axios.post(url, userData)
+      .then((res) => {
+        dispatch({
+          type: 'AUTHORIZE_USER',
+          payload: res.data,
+          username: userData.auth.username,
+        });
+      })
+      .catch((err) => dispatch({
+        type: 'CREATE_ERROR',
+        payload: err,
+      }));
+  };
+
   const postFavourites = (address, data, user) => (dispatch) => {
     const token = localStorage.getItem('jwt');
     const authAxios = Axios.create({
@@ -159,7 +180,6 @@ const queryBuilder = () => {
       message: 'Cabin was successfully added to Favourites!',
       type: 'add_fav',
     };
-
     authAxios
       .post(address, cabinData)
       .then((res) => {
@@ -259,7 +279,15 @@ const queryBuilder = () => {
   };
 
   return {
-    get, post, update, deletes, postUser, postFavourites, removeFavourites, postImage,
+    get,
+    post,
+    update,
+    deletes,
+    postUser,
+    authorizeUser,
+    postFavourites,
+    removeFavourites,
+    postImage,
   };
 };
 

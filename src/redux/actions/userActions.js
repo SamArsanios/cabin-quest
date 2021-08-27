@@ -1,11 +1,10 @@
-import Axios from 'axios';
+// import Axios from 'axios';
 import baseURL from './baseURL';
 import queryBuilder from './actionHelper';
 
 const createUser = (data) => queryBuilder().postUser(data, `${baseURL}/api/v1/users`, 'CREATE_USER');
 
-// const authorizeUser = (data) =>
-// queryBuilder().postUser(data, `${baseURL}/user_token`, 'AUTHORIZE_USER');
+const authorizeUser = (data) => queryBuilder().authorizeUser(data);
 
 const fetchUser = () => queryBuilder().get('/api/v1/users/', 'FETCH_USER');
 
@@ -32,25 +31,25 @@ const fetchUserFavourites = () => queryBuilder().get('/api/v1/favourites', 'ADD_
 // };
 
 // Authorize User
-const authorizeUser = (data) => (dispatch) => {
-  const url = `${baseURL}/user_token`;
-  const userData = {
-    auth: data,
-  };
+// const authorizeUser = (data) => (dispatch) => {
+//   const url = `${baseURL}/user_token`;
+//   const userData = {
+//     auth: data,
+//   };
 
-  Axios.post(url, userData)
-    .then((res) => {
-      dispatch({
-        type: 'AUTHORIZE_USER',
-        payload: res.data,
-        username: userData.auth.username,
-      });
-    })
-    .catch((err) => dispatch({
-      type: 'CREATE_ERROR',
-      payload: err,
-    }));
-};
+//   Axios.post(url, userData)
+//     .then((res) => {
+//       dispatch({
+//         type: 'AUTHORIZE_USER',
+//         payload: res.data,
+//         username: userData.auth.username,
+//       });
+//     })
+//     .catch((err) => dispatch({
+//       type: 'CREATE_ERROR',
+//       payload: err,
+//     }));
+// };
 
 // Fetch user
 // const fetchUser = () => (dispatch) => {
