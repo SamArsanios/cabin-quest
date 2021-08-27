@@ -1,7 +1,7 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable camelcase */
 // import Axios from 'axios';
-// import baseURL from './baseURL';
+import baseURL from './baseURL';
 import queryBuilder from './actionHelper';
 
 // const addToFavourites = (data, user) => (dispatch) => {
@@ -55,9 +55,9 @@ import queryBuilder from './actionHelper';
 //     }));
 // };
 
-const addToFavourites = (data) => queryBuilder().postFavourites(data, '/api/v1/favourites.json');
+const addToFavourites = (data, user) => queryBuilder().postFavourites('/api/v1/favourites.json', data, user);
 
-const removeFromFavourites = (cabin_id) => queryBuilder().removeFavourites(`/api/v1/favourites/${cabin_id}.json`);
+const removeFromFavourites = (cabin_id, user) => queryBuilder().removeFavourites(`${baseURL}/api/v1/favourites/${cabin_id}.json`, cabin_id, user);
 
 const uploadImage = (image) => queryBuilder().postImage(image);
 // const removeFromFavourites = (cabin_id, user) => (dispatch) => {
