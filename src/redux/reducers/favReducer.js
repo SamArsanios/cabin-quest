@@ -24,7 +24,7 @@ const fetchReducer = (state = initialState, action) => {
     case 'REMOVE_FAVOURITE':
       return {
         ...state,
-        cabins: state.cabins.filter((cabin) => cabin.cabin_id !== Number(action.payload)),
+        cabins: state.cabins.filter((cabin) => cabin.id !== Number(action.payload)),
       };
     default:
       return state;

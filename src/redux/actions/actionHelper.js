@@ -163,7 +163,7 @@ const queryBuilder = () => {
       }));
   };
 
-  const postFavourites = (address, data, user) => (dispatch) => {
+  const postFavourites = (address, data, user, favourites, cabin) => (dispatch) => {
     const token = localStorage.getItem('jwt');
     const authAxios = Axios.create({
       baseURL: `${baseURL}`,
@@ -172,29 +172,19 @@ const queryBuilder = () => {
         'Content-Type': 'application/json',
       },
     });
-
     const cabinData = {
-      favourite: data,
+      favourite: { ...data, user_id: user.id },
     };
     const payload = {
       message: 'Cabin was successfully added to Favourites!',
-      type: 'add_fav',
+      type: 'SUCCESS_MESSAGE',
     };
     authAxios
       .post(address, cabinData)
-      .then((res) => {
+      .then(() => {
         dispatch({
           type: 'ADD_FAVOURITE',
-          payload: res.data.cabin_id,
-        });
-
-        dispatch({
-          type: 'FETCH_CABIN',
-          payload: res.data.cabin_id,
-        });
-
-        dispatch({
-          type: 'FAVOURITE_CABIN',
+          payload: favourites.concat(cabin),
         });
 
         dispatch({
@@ -210,6 +200,12 @@ const queryBuilder = () => {
       .catch((err) => dispatch({
         type: 'CREATE_ERROR',
         payload: err,
+      }));
+
+    authAxios.get('/api/v1/favourites')
+      .then((res) => dispatch({
+        type: 'ADD_FAVOURITE',
+        payload: res.data,
       }));
   };
 
