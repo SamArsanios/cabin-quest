@@ -14,6 +14,7 @@ import { Button, Card } from 'react-bootstrap';
 import Icofont from 'react-icofont';
 // import { fetchUser } from '../../redux/actions/userActions';
 import { fetchCabin, deleteCabin, unLoad } from '../../redux/actions/cabinActions';
+import { fetchUserFavourites } from '../../redux/actions/userActions';
 import { addToFavourites, removeFromFavourites, isFavourite } from '../../redux/actions/favActions';
 import AddCabin from './AddCabin';
 import Errors from './Errors';
@@ -23,7 +24,6 @@ class CabinDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      favBtn: false,
       favourite: false,
       user_id: 0,
       cabin: 0,
@@ -35,37 +35,14 @@ class CabinDetails extends Component {
       fetchCabin, currentUser, match,
     } = this.props;
     const { cabin_id } = match.params;
-    // const jwt = localStorage.getItem('jwt');
-    // const username = localStorage.getItem('username');
-    // jwt && username && fetchUser(username);
     fetchCabin(cabin_id);
+    fetchUserFavourites();
 
     this.setState({
       ...this.state,
       user_id: currentUser.id,
       cabin_id,
     });
-  }
-
-  componentDidUpdate(nextProps) {
-    const {
-      currentUser, match, isFavourite, fav, type, history,
-    } = this.props;
-    const { id, favourites } = currentUser;
-    const { cabin_id } = match.params;
-    let favourite = false;
-    if (favourites !== nextProps.currentUser.favourites) {
-      this.setState({
-        favBtn: false,
-      });
-      if (id && !fav) {
-        favourite = favourites.some((fav) => fav.cabin_id == cabin_id);
-        favourite && isFavourite();
-      }
-    }
-
-    type === 'delete_cabin'
-      && history.push(`/dashboard/${currentUser.username}`);
   }
 
   render() {
@@ -76,12 +53,11 @@ class CabinDetails extends Component {
       errors,
       loading,
       addToFavourites,
-      fav,
+      favourites,
       match,
       unLoad,
       removeFromFavourites,
     } = this.props;
-    const { favBtn } = this.state;
     const { cabin_id } = match.params;
     // Handel Delete Cabin
     const handleDelete = () => {
@@ -91,25 +67,15 @@ class CabinDetails extends Component {
 
     // Add To Favourite
     const addToFav = () => {
-      this.setState(
-        {
-          ...this.state,
-          favBtn: true,
-          user_id: currentUser.id,
-          cabin_id,
-        },
-        () => {
-          addToFavourites(this.state, currentUser);
-        },
-      );
+      addToFavourites(this.state, currentUser, favourites, cabin);
+      fetchUserFavourites();
     };
 
     const removeFromFav = () => {
-      this.setState({
-        favBtn: true,
-      });
       removeFromFavourites(cabin_id, currentUser);
+      fetchUserFavourites();
     };
+    const isFavourite = () => (favourites.some((fav) => fav.id == cabin_id));
 
     const cabinDetails = this.props ? (
       <div className="house-content">
@@ -120,11 +86,10 @@ class CabinDetails extends Component {
               <Card.Title className="text-uppercase text-center font-weight-bolder">
                 {cabin.name}
                 {' '}
-                {fav ? (
+                {favourites.length && isFavourite() ? (
                   <button
                     type="button"
                     onClick={removeFromFav}
-                    disabled={favBtn}
                     className=" btn btn-transparent hero-btn"
                   >
                     <Icofont icon="heart-alt" />
@@ -135,7 +100,6 @@ class CabinDetails extends Component {
                 ) : (
                   <button
                     type="button"
-                    disabled={favBtn}
                     onClick={addToFav}
                     className=" btn btn-transparent hero-btn"
                   >
@@ -187,19 +151,14 @@ CabinDetails.propTypes = {
   errors: PropTypes.any,
   match: PropTypes.any,
   cabin: PropTypes.any,
+  favourites: PropTypes.any,
   loading: PropTypes.any,
-  type: PropTypes.string,
-  fav: PropTypes.any,
-  username: PropTypes.any,
   currentUser: PropTypes.any,
-  // fetchUser: PropTypes.func.isRequired,
   fetchCabin: PropTypes.func.isRequired,
   deleteCabin: PropTypes.func.isRequired,
   addToFavourites: PropTypes.func.isRequired,
   removeFromFavourites: PropTypes.func.isRequired,
-  isFavourite: PropTypes.func.isRequired,
   unLoad: PropTypes.func.isRequired,
-  history: PropTypes.any,
 };
 
 const mapStateToProps = (state) => ({
@@ -208,8 +167,8 @@ const mapStateToProps = (state) => ({
   type: state.succMsg.type,
   currentUser: state.userData.currentUser,
   loading: state.data.loading,
-  fav: state.cabin.fav,
   loggedIn: state.userData.loggedIn,
+  favourites: state.favourite.cabins,
 });
 
 export default connect(mapStateToProps, {
