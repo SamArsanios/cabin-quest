@@ -63,5 +63,4 @@ Give a ⭐️ if you like this project!
 - [Alexey Savitskiy](https://www.behance.net/alexey_savitskiy)
 
 ## 📝 License
-
 MIT License
