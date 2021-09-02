@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+src/assets/images/screenshot-1.png:Zone.Identifier
+src/assets/images/screenshot-2.png:Zone.Identifier

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddCabin renders correctly 1`] = `
+<div>
+  <button
+    className="btn hero-btn cus-btn w-100 btn btn-transparent"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    undefined  Cabin
+  </button>
+</div>
+`;

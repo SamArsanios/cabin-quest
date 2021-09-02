@@ -3,21 +3,14 @@
 - This is the frontend part for the capstone project of Microverse main technical curriculum.
   This is a cabin finder or locator app where users are able to see a list of different types of cabins and can add them to their favourites. 
 
-<!-- ### Main page
+ ### Main page
 
-![Photo](./main.png)
+![Photo](src/assets/images/screenshot-2.png)
 
-### Houses page
-
-![Photo](./house.png)
-
-### Dashboard
-
-![Photo](./favourite.png) -->
 
 ## Live Demo
 
-- [Live](https://cabinquest.herokuapp.com/)
+- [Project Link](https://cabinquest.herokuapp.com/)
 
 ## Main Features
 
@@ -29,7 +22,7 @@
 
 ## API
 
-- The backend API for this project created by me and can be found in [github](https://github.com/SamArsanios/cabin-quest-ap).
+- The backend API for this project can be found [here](https://github.com/SamArsanios/cabin-quest-ap).
 
 ## Built with
 
@@ -70,5 +63,4 @@ Give a ⭐️ if you like this project!
 - [Alexey Savitskiy](https://www.behance.net/alexey_savitskiy)
 
 ## 📝 License
-
 MIT License
