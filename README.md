@@ -22,7 +22,7 @@
 
 ## API
 
-- The backend API for this project can be found [here](https://github.com/SamArsanios/cabin-quest-ap).
+- The backend API for this project can be found [here](https://github.com/SamArsanios/cabin-quest-api).
 
 ## Built with
 
