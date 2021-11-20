@@ -25,7 +25,6 @@ class Dashboard extends Component {
     } = this.props;
 
     const { username } = match.params;
-    // jwt && username && !currentUser.id && fetchUser(username);
     fetchUser(username);
     fetchCabins();
 
