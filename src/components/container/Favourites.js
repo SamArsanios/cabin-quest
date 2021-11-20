@@ -18,10 +18,6 @@ class Favourites extends Component {
     this.state = {
       userFavsLoaded: false,
     };
-    // const { fetchUser } = props;
-    // const username = localStorage.getItem('username');
-    // const jwt = localStorage.getItem('jwt');
-    // jwt && username && fetchUser(username);
   }
 
   componentDidMount() {
