@@ -28,8 +28,6 @@ class Favourites extends Component {
     if (errors.response) {
       errors.response.status === 401 && history.push('/signin');
     }
-
-    // currentUser.id && fetchUserFavourites(currentUser.id);
     if (currentUser.id) {
       fetchUserFavourites();
     }
@@ -110,7 +108,6 @@ Favourites.propTypes = {
   errors: PropTypes.any,
   loading: PropTypes.any,
   history: PropTypes.any,
-  // fetchUser: PropTypes.func.isRequired,
   currentUser: PropTypes.any,
   favourites: PropTypes.any,
   fetchUserFavourites: PropTypes.func.isRequired,
