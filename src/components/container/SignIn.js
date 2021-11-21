@@ -37,7 +37,6 @@ class SignIn extends Component {
       ...this.state,
       isSubmit: false,
     });
-    // jwt && username && fetchUser(username);
     jwt && loggedIn && history.push(`/user/${username}`);
   }
 
