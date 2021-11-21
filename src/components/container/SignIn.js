@@ -85,9 +85,6 @@ class SignIn extends Component {
           <h1 className="auth-header py-2 text-center font-weight-bolder">
             Sign In
           </h1>
-          {/* <p className="auth-desc font-weight-bolder">
-            Hey! Log In to manage your account.
-          </p> */}
         </div>
         <Form
           className="user-form px-5 py-4 shadow-lg bg-white"
