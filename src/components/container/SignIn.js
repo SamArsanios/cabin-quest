@@ -106,9 +106,6 @@ class SignIn extends Component {
               placeholder="Enter email"
               onChange={this.handleChange}
             />
-            {/* <Form.Text className="text-muted">
-              We will never share your email with anyone else.
-            </Form.Text> */}
           </Form.Group>
 
           <Form.Group controlId="password" className="pb-5">
