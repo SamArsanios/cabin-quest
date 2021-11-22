@@ -60,9 +60,6 @@ class SignUp extends Component {
         authorizeUser(data);
       }
     }
-
-    // const jwt = localStorage.getItem('jwt');
-    // jwt && userData.username && fetchUser(userData.username);
     loggedIn && history.push(`/user/${userData.username}`);
   }
 
