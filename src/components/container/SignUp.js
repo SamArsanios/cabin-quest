@@ -34,7 +34,6 @@ class SignUp extends Component {
       loggedIn, username, history,
     } = this.props;
     const jwt = localStorage.getItem('jwt');
-    // jwt && username && fetchUser(username);
     jwt && loggedIn && history.push(`/user/${username}`);
   }
 
@@ -209,7 +208,6 @@ SignUp.propTypes = {
   createUser: PropTypes.func.isRequired,
   username: PropTypes.any,
   authorizeUser: PropTypes.func.isRequired,
-  // fetchUser: PropTypes.func.isRequired,
   unLoad: PropTypes.func.isRequired,
   history: PropTypes.any,
 };
