@@ -178,7 +178,6 @@ const mapStateToProps = (state) => ({
   cabinImgUrl: state.favourite.cabinImgUrl,
   currentUser: state.userData.currentUser,
   cabin: state.cabin.cabin,
-  // loading: state.userData.loading,
   type: state.succMsg.type,
   loading: state.data.loading,
 });
