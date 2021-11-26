@@ -12,7 +12,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button, Card } from 'react-bootstrap';
 import Icofont from 'react-icofont';
-// import { fetchUser } from '../../redux/actions/userActions';
 import { fetchCabin, deleteCabin, unLoad } from '../../redux/actions/cabinActions';
 import { fetchUserFavourites } from '../../redux/actions/userActions';
 import { addToFavourites, removeFromFavourites, isFavourite } from '../../redux/actions/favActions';
@@ -59,7 +58,7 @@ class CabinDetails extends Component {
       removeFromFavourites,
     } = this.props;
     const { cabin_id } = match.params;
-    // Handel Delete Cabin
+    // Handle Delete Cabin
     const handleDelete = () => {
       unLoad({ loading: true });
       deleteCabin(cabin.id);
@@ -172,7 +171,6 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  // fetchUser,
   fetchCabin,
   deleteCabin,
   addToFavourites,
