@@ -33,9 +33,6 @@ class NavBar extends Component {
         variant="light"
       >
         <Navbar.Brand href="/" className="font-weight-bolder">
-          {/* <span className="brand-icon">
-            <Icofont icon="building" />
-          </span> */}
           {' '}
           CABIN QUEST
         </Navbar.Brand>
