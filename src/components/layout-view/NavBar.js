@@ -99,11 +99,6 @@ class NavBar extends Component {
                   {' '}
                   Favourites
                 </NavDropdown.Item>
-                {/* <NavDropdown.Item href="#action/3.3">Messages</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Notifications
-                </NavDropdown.Item> */}
               </NavDropdown>
             </Nav>
           )}
